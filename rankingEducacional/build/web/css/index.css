@@ -1,0 +1,74 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+
+body{
+	background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url("../imagens/aluno.jpg") no-repeat;
+	background-size: cover;
+	height: 100vh;
+}
+
+.container{
+	width: 100%;
+	display: inline-block;
+}
+
+.menu{
+	width: 50%;
+	display: inline-block;
+	text-align: center;
+	margin-top: 100px;
+	position: relative;
+}
+
+#ranking{
+	float: right;
+}
+
+.opcoes,.opcoesIni{
+	margin: 15px;
+	visibility: hidden;
+}
+
+.opcoes img{
+	border-radius: 50%;
+	cursor: pointer;
+	padding: 2px;
+	width: 40px;
+	height: 40px;
+	border:3px solid #fff;
+	background-color: #4285f4;
+	transition: all .4s ease;
+}
+
+.opcoes img:hover{
+	background-color: #fff;
+}
+
+.container p{
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.opcoesIni img{
+	cursor: pointer;
+	border-radius: 50%;
+	border:3px solid #fff;
+	background-color: #B0B999;
+	padding: 7px;
+	transition: all .2s ease;
+}
+
+.opcoesIni img:hover{
+	transform: scale(1.1);
+}
+
+#opAluno{
+	visibility: visible;
+}
+
+#opRanking{
+	visibility: visible;
+}
