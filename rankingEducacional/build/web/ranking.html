@@ -1,96 +1,179 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-	<title>Ranking</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/popups.css">
-</head>
-<body>
-<div class="popup">
-	<div class="logoPop">
-		<img src="imagens/addRanking.png">
-	</div>
-	<div class="title">
-		<p>Ranking</p>
-	</div>
-        <select class="exibicao">
-	  <option value="10">10</option>
-	  <option value="20">20</option>
-	  <option value="30">50</option>
-	  <option value="999">Tudo</option>
-	</select>	
-	<section class="questionario">
-		<table class="ranking">
-			<tr>
-				<th><a href="#">Classificação</a></th>
-				<th id="id"><a href="#">Matrícula</a></th>
-				<th><a href="#">Pontuação</a></th>
-				<th><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-			<tr>
-				<td><a href="#">Classificação</a></th>
-				<td><a href="#">Matrícula</a></th>
-				<td><a href="#">Pontuação</a></th>
-				<td><a href="#">Observação</a></th>
-			</tr>
-		</table>
-		<br>
-		<input type="submit" value="Exportar"/>
-	</section>
-</div>
-</body>
+	<head>
+		<title>Ranking</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/index.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+	</head>
+	<body>
+
+	<!-- Header -->
+		<div id="header">
+			<div id="nav-wrapper"> 
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Início</a></li>
+						<li><a href="novo-aluno.html">Adicionar Aluno</a></li>
+						<li><a href="pesquisar.html">Pesquisar Aluno</a></li>
+						<li class="active"><a href="#">Ranking</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="#">Sistema X</a></h1>
+					<a href="#main"><span class="fa fa-chevron-down"></span></a>
+				</div>
+			</div>
+		</div>
+	<!-- Header --> 
+
+	<!-- Main -->
+		<div id="main" class="quest">
+			<div id="content" class="container">
+				<section class="ranking">
+					<header>
+						<h2>Ranking</h2>
+					</header>
+					<table>
+
+					  <p>Exibir:</p>
+
+					  <select>
+				  		<option value="10">10</option>
+	                    <option value="20">20</option>
+	                    <option value="50">50</option>
+	                    <option value="all">Tudo</option>
+					  </select>
+
+					  <thead>
+					    <tr>
+					      <th scope="col">Classificação</th>
+					      <th scope="col">Matrícula</th>
+					      <th scope="col">Pontuação</th>
+					      <th scope="col">Observação</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td data-label="Classificação">1</td>
+					      <td data-label="Matrícula">04012016</td>
+					      <td data-label="Pontuação">190</td>
+					      <td data-label="Observação">S</td>
+					    </tr>
+					    <tr>
+					      <td scope="row" data-label="Classificação">2</td>
+					      <td data-label="Matrícula">03012016</td>
+					      <td data-label="Pontuação">443</td>
+					      <td data-label="Observação">N</td>
+					    </tr>
+					    <tr>
+					      <td scope="row" data-label="Classificação">3</td>
+					      <td data-label="Matrícula">03012016</td>
+					      <td data-label="Pontuação">181</td>
+					      <td data-label="Observação">N</td>
+					    </tr>
+					    <tr>
+					      <td scope="row" data-label="Classificação">4</td>
+					      <td data-label="Matrícula">02012016</td>
+					      <td data-label="Pontuação">2</td>
+					      <td data-label="Observação">S</td>
+					    </tr>
+					    <tr>
+					      <td data-label="Classificação">1</td>
+					      <td data-label="Matrícula">04012016</td>
+					      <td data-label="Pontuação">190</td>
+					      <td data-label="Observação">S</td>
+					    </tr>
+					    <tr>
+					      <td scope="row" data-label="Classificação">2</td>
+					      <td data-label="Matrícula">03012016</td>
+					      <td data-label="Pontuação">443</td>
+					      <td data-label="Observação">N</td>
+					    </tr>
+					    <tr>
+					      <td scope="row" data-label="Classificação">3</td>
+					      <td data-label="Matrícula">03012016</td>
+					      <td data-label="Pontuação">181</td>
+					      <td data-label="Observação">N</td>
+					    </tr>
+					    <tr>
+					      <td scope="row" data-label="Classificação">4</td>
+					      <td data-label="Matrícula">02012016</td>
+					      <td data-label="Pontuação">2</td>
+					      <td data-label="Observação">S</td>
+					    </tr>
+					    <tr>
+					      <td data-label="Classificação">1</td>
+					      <td data-label="Matrícula">04012016</td>
+					      <td data-label="Pontuação">190</td>
+					      <td data-label="Observação">S</td>
+					    </tr>
+					    <tr>
+					      <td scope="row" data-label="Classificação">2</td>
+					      <td data-label="Matrícula">03012016</td>
+					      <td data-label="Pontuação">443</td>
+					      <td data-label="Observação">N</td>
+					    </tr>
+					  </tbody>
+					</table>
+
+					<!--<button>Exportar</button>-->
+
+				</section>
+			</div>
+		</div>
+	<!-- /Main -->
+
+	<!-- Tweet -->
+		<div id="tweet">
+			<div class="container">
+				<section>
+					<blockquote>&ldquo;A educação é um processo social, é desenvolvimento. Não é a preparação para a vida, é a própria vida.&rdquo; - John Dewey</blockquote>
+				</section>
+			</div>
+		</div>
+	<!-- /Tweet -->
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<section>
+					<header>
+						<h2>Contate-nos</h2>
+						<span class="byline">Em caso de dúvidas, críticas ou elogios, envie uma mensagem em um dos seguintes links</span>
+					</header>
+					<ul class="contact">
+						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+						<li class="active"><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="#" class="fa fa-instagram"><span>Instagram</span></a></li>
+						<li><a href="#" class="fa fa-envelope"><span>Gmail</span></a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	<!-- /Footer -->
+
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+			</div>
+		</div>
+	</body>
 </html>
