@@ -22,10 +22,10 @@ public class PostgresDatabase extends IDatabase {
     @Override
     public Connection getConnection() throws SQLException {
         try {
+            Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://localhost:5432/prototipoEducacional";
             String usuario = "postgres";
             String senha = "000000";
-            Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(url, usuario, senha);
         } catch (ClassNotFoundException | SQLException erro) {
             throw new RuntimeException("Erro de conexao: " + erro);

@@ -22,14 +22,8 @@
     </head>
     <body>
         <%
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/prototipoEducacional";
-            String usuario = "postgres";
-            String senha = "000000";
-            Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
             RankingController rankingController = new RankingController();
-            RankingDAO rankingDAO = new RankingDAO(conexao);
+            RankingDAO rankingDAO = new RankingDAO();
             List<Ranking> ranking = new ArrayList(); 
 
             rankingController.gerarRanking();

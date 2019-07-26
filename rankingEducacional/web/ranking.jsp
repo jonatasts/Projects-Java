@@ -1,3 +1,8 @@
+<%@page import="java.util.List"%>
+<%@page import="model.Ranking"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.RankingDAO"%>
+<%@page import="controllers.RankingController"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -74,16 +79,36 @@
 					  <tbody>
                                               
                                            <%
-                                               //Carregar os dados para serem exibidos
-                                               for(int i = 0; i < array; i++){
+                                                //Carregar os dados para serem exibidos do banco
+                                                RankingController rankingController = new RankingController();
+                                                RankingDAO rankingDAO = new RankingDAO();
+                                                List<Ranking> ranking = new ArrayList();
                                                
-                                             /*  
-					    out.println("<tr>");
-					    out.println("<td data-label="Classificação">1</td>")
-					    <td data-label="Matrícula">04012016</td>
-					      <td data-label="Pontuação">190</td>
-					      <td data-label="Observação">S</td>
-					    </tr> */
+                                                rankingController.gerarRanking();
+                                                ranking = rankingController.verificaObservacao(rankingDAO.select());
+                                                int matricula;
+                                                int pontuacao;
+                                                Boolean observacao;
+                                                int contador=1;
+                                                
+                                                // Exibir os dados do raning
+                                                for(int i = 0; i < ranking.size(); i++){
+                                                    matricula = ranking.get(i).getIdAluno();
+                                                    pontuacao = ranking.get(i).getPontuacao();
+                                                    observacao = ranking.get(i).getObservacao();
+                                                    
+                                                    out.println("<tr>");
+                                                    out.println("<td data-label=\"Classificação\">"+ contador +"</td>");
+                                                    out.println("<td data-label=\"Matrícula\">"+ matricula +"</td>");
+                                                    out.println("<td data-label=\"Pontuação\">"+ pontuacao +"</td>");
+                                                    if(observacao){
+                                                        out.println("<td data-label=\"Observação\">SIM</td>");
+                                                    }
+                                                    else {
+                                                        out.println("<td data-label=\"Observação\">NÃO</td>");
+                                                    }
+                                                    out.println("</tr>");
+                                                    contador++;
 					    }
                                            %>
                                            

@@ -15,7 +15,7 @@ public class RankingDAO {
     IDatabase banco = IDatabase.getDatabase();
     Connection conexao;
 
-    public RankingDAO(Connection connection) {
+    public RankingDAO() {
         try {
             conexao = banco.getConnection();
         } catch (SQLException ex) {

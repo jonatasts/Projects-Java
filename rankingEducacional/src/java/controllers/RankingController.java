@@ -1,7 +1,6 @@
 package controllers;
 
 import dao.RankingDAO;
-import interfaces.IDatabase;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.AlunoFator;
@@ -10,8 +9,6 @@ import model.Ranking;
 
 public class RankingController {
 
-    IDatabase banco = IDatabase.getDatabase();
-    
     public RankingController() {
     }
 
@@ -46,7 +43,7 @@ public class RankingController {
     }
 
     private void inserirRankingBanco(ArrayList<Ranking> rankings) throws SQLException {
-        RankingDAO rankingDAO = new RankingDAO(banco.getConnection());
+        RankingDAO rankingDAO = new RankingDAO();
         rankingDAO.insert(rankings);
     }
 

@@ -17,12 +17,6 @@
     </head>
     <body>
         <%
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/prototipoEducacional";
-            String usuario = "postgres";
-            String senha = "postgres";
-            Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
             try {
                 AlunoFatorDAO alunoFatorDAO = new AlunoFatorDAO();
                 AlunoFator alunoFator = new AlunoFator();
