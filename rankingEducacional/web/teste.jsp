@@ -6,7 +6,7 @@
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="models.AlunoFator"%>
+<%@page import="model.AlunoFator"%>
 <%@page import="dao.AlunoFatorDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>

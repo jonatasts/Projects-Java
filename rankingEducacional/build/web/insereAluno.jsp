@@ -20,7 +20,7 @@
             Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://localhost:5432/prototipoEducacional";
             String usuario = "postgres";
-            String senha = "000000";
+            String senha = "postgres";
             Connection conexao = DriverManager.getConnection(url, usuario, senha);
 
             try {
@@ -37,6 +37,10 @@
                 alunoFator.setAnoLetivo(Integer.parseInt(request.getParameter("ano_letivo")));
                 alunoFator.setFatores(pontos);
                 alunoFatorDAO.insert(alunoFator);
+                
+                String redirectURL = "sucesso.jsp";
+                response.sendRedirect(redirectURL);
+
 
             } catch (RuntimeException erro) {
                 throw new RuntimeException("Erro insert aluno e fator: " + erro);

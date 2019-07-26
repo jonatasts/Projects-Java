@@ -1104,7 +1104,7 @@ input[type=submit]{
 }
 
 .ranking button{
-	margin-top: 2em;
+	margin: auto 5px;
 }
 
 table {
