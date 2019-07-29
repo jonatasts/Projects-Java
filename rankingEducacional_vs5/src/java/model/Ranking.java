@@ -4,7 +4,7 @@ public class Ranking {
     private String idAluno;
     private int anoEmCurso;
     private int pontuacao;
-    private boolean observacao;
+    private boolean observacao = false;
 
     public Ranking() {
     }
