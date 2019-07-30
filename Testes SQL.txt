@@ -1,9 +1,0 @@
-select * from ranking;
-select * from alunofator
-select * from fator
-
-delete from ranking;
-delete from alunofator
-
-drop table ranking;
-drop table alunofator
