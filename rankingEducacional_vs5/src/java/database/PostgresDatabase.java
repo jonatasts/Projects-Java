@@ -23,7 +23,7 @@ public class PostgresDatabase extends IDatabase {
     public Connection getConnection() throws SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/prototipoEducacional";
+            String url = "jdbc:postgresql://localhost:5432/rankingeducacional";
             String usuario = "postgres";
             String senha = "000000";
             return DriverManager.getConnection(url, usuario, senha);

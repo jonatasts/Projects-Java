@@ -2,7 +2,7 @@ package model;
 
 public class AlunoFator {
 
-    private String matriculaAluno;
+    private int matriculaAluno;
     private int anoEmCurso;
     private int anoLetivo;
     private int[] fatores = new int[30];
@@ -10,11 +10,11 @@ public class AlunoFator {
     public AlunoFator() {
     }
 
-    public String getMatriculaAluno() {
+    public int getMatriculaAluno() {
         return matriculaAluno;
     }
 
-    public void setMatriculaAluno(String matriculaAluno) {
+    public void setMatriculaAluno(int matriculaAluno) {
         this.matriculaAluno = matriculaAluno;
     }
 

@@ -36,7 +36,7 @@ public class RankingDAO {
         preparedStatement.execute();
 
         for (Ranking ranking : rankings) {
-            preparedStatement2.setString(1, ranking.getIdAluno());
+            preparedStatement2.setInt(1, ranking.getIdAluno());
             preparedStatement2.setInt(2, ranking.getAnoEmCurso());
             preparedStatement2.setInt(3, ranking.getPontuacao());
             preparedStatement2.execute();
@@ -54,7 +54,7 @@ public class RankingDAO {
         while (resultSet.next()) {
             Ranking ranking = new Ranking();
 
-            ranking.setIdAluno(resultSet.getString("idaluno"));
+            ranking.setIdAluno(resultSet.getInt("idaluno"));
             ranking.setAnoEmCurso(resultSet.getInt("anoemcurso"));
             ranking.setPontuacao(resultSet.getInt("pontuacao"));
 

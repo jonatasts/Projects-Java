@@ -18,21 +18,21 @@ public class RankingController {
         ArrayList<Ranking> rankings = new ArrayList();
 
         ArrayList<AlunoFator> alunoFatores = AlunoFatorController.listarPontuacaoAluno();
+        ArrayList<Fator> fatoresBanco = fatorController.listarFatores();
 
         for (AlunoFator alunoFator : alunoFatores) {
-            rankings.add(calculaPontuacao(new Ranking(), alunoFator, fatorController));
+            rankings.add(calculaPontuacao(new Ranking(), alunoFator, fatoresBanco));
         }
         inserirRankingBanco(rankings);
     }
 
-    private Ranking calculaPontuacao(Ranking ranking, AlunoFator alunoFator, FatorController fatoresBanco) throws SQLException {
-        ArrayList<Fator> fatores = fatoresBanco.listarFatores();
+    private Ranking calculaPontuacao(Ranking ranking, AlunoFator alunoFator, ArrayList<Fator> fatoresBanco) throws SQLException {
         int resultado = 0;
         int[] pontosPontuacao = alunoFator.getFatores();
 
         for (int i = 0; i < pontosPontuacao.length; i++) {
             if (pontosPontuacao[i] > 0) {
-                resultado += fatores.get(i).getPeso();
+                resultado += fatoresBanco.get(i).getPeso();
             }
         }
 
@@ -50,8 +50,9 @@ public class RankingController {
     public ArrayList<Ranking> verificaObservacao(ArrayList<Ranking> rankingBanco) throws SQLException {
         AlunoFatorController AlunoFatorController = new AlunoFatorController();
         ArrayList<AlunoFator> alunoFatores = new ArrayList();
-        alunoFatores = AlunoFatorController.listarPontuacaoAluno();
         ArrayList<Ranking> rankings = new ArrayList();
+        
+        alunoFatores = AlunoFatorController.listarPontuacaoAluno();
 
         for (Ranking ranking : rankingBanco) {
             rankings.add(insereObservacao(ranking, alunoFatores));
@@ -62,7 +63,7 @@ public class RankingController {
     private Ranking insereObservacao(Ranking ranking, ArrayList<AlunoFator> alunoFatores) {
         int[] pontos;
         for (AlunoFator alunoFator : alunoFatores) {
-            if (ranking.getIdAluno().equals(alunoFator.getMatriculaAluno())) {
+            if (ranking.getIdAluno() == (alunoFator.getMatriculaAluno())) {
                 pontos = alunoFator.getFatores();
                 for (int i = 0; i < pontos.length; i++) {
                     if (pontos[i] < 0) {

@@ -27,7 +27,7 @@
                     pontos[i] = Integer.parseInt(request.getParameter("fator" + (i + 1)));
                 }
 
-                alunoFator.setMatriculaAluno(request.getParameter("matricula"));
+                alunoFator.setMatriculaAluno(Integer.parseInt(request.getParameter("matricula")));
                 alunoFator.setAnoEmCurso(Integer.parseInt(request.getParameter("ano_corrente")));
                 alunoFator.setAnoLetivo(Integer.parseInt(request.getParameter("ano_letivo")));
                 alunoFator.setFatores(pontos);

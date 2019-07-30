@@ -34,7 +34,7 @@ public class AlunoFatorDAO {
         preparedStatement = conexao.prepareStatement(insertAluno);
 
         try {
-            preparedStatement.setString(1, alunoFator.getMatriculaAluno());
+            preparedStatement.setInt(1, alunoFator.getMatriculaAluno());
             preparedStatement.setInt(2, alunoFator.getAnoEmCurso());
             preparedStatement.setInt(3, alunoFator.getAnoLetivo());
             
@@ -61,7 +61,7 @@ public class AlunoFatorDAO {
             while (resultSet.next()) {
                 AlunoFator alunoFator = new AlunoFator();
 
-                alunoFator.setMatriculaAluno(resultSet.getString("matriculaaluno"));
+                alunoFator.setMatriculaAluno(resultSet.getInt("matriculaaluno"));
                 alunoFator.setAnoEmCurso(resultSet.getInt("anoEmCurso"));
                 alunoFator.setAnoLetivo(resultSet.getInt("anoLetivo"));
                 

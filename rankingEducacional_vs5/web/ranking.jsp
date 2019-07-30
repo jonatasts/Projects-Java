@@ -82,21 +82,21 @@
                                            <%
                                                 RankingController rankingController = new RankingController();
                                                 RankingDAO rankingDAO = new RankingDAO();
-                                                List<Ranking> ranking = new ArrayList();
+                                                List<Ranking> rankings = new ArrayList();
                                                
                                                 rankingController.gerarRanking();
-                                                ranking = rankingController.verificaObservacao(rankingDAO.select());
-                                                String matricula;
+                                                rankings = rankingController.verificaObservacao(rankingDAO.select());
+                                                int matricula;
                                                 int anoEmCurso;
                                                 int pontuacao;
                                                 Boolean observacao;
                                                 int contador=1;
                                                 
-                                                for(int i = 0; i < ranking.size(); i++){
-                                                    matricula = ranking.get(i).getIdAluno();
-                                                    anoEmCurso = ranking.get(i).getAnoEmCurso();
-                                                    pontuacao = ranking.get(i).getPontuacao();
-                                                    observacao = ranking.get(i).getObservacao();
+                                                for(int i = 0; i < rankings.size(); i++){
+                                                    matricula = rankings.get(i).getIdAluno();
+                                                    anoEmCurso = rankings.get(i).getAnoEmCurso();
+                                                    pontuacao = rankings.get(i).getPontuacao();
+                                                    observacao = rankings.get(i).getObservacao();
                                                     
                                                     out.println("<tr>");
                                                     out.println("<td data-label=\"Classificação\">"+ contador +"</td>");

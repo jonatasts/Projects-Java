@@ -1,7 +1,7 @@
 package model;
 
 public class Ranking {
-    private String idAluno;
+    private int idAluno;
     private int anoEmCurso;
     private int pontuacao;
     private boolean observacao = false;
@@ -9,16 +9,16 @@ public class Ranking {
     public Ranking() {
     }
 
-    public Ranking(String idAluno, int pontuacao) {
+    public Ranking(int idAluno, int pontuacao) {
         this.idAluno = idAluno;
         this.pontuacao = pontuacao;
     }
 
-    public String getIdAluno() {
+    public int getIdAluno() {
         return idAluno;
     }
 
-    public void setIdAluno(String idAluno) {
+    public void setIdAluno(int idAluno) {
         this.idAluno = idAluno;
     }
 
