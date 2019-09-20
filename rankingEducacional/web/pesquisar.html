@@ -26,8 +26,8 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Início</a></li>
-						<li><a href="novo_aluno.html">Adicionar Aluno</a></li>
-						<li><a href="pesquisar.html">Pesquisar Aluno</a></li>
+						<li><a href="novo-aluno.html">Adicionar Aluno</a></li>
+						<li><a href="#">Pesquisar Aluno</a></li>
 						<li class="active"><a href="ranking.jsp">Ranking</a></li>
 					</ul>
 				</nav>
@@ -48,22 +48,30 @@
 			<div id="content" class="container">
 				<section class="questionario">
 					<header>
-						<h2>Novo Aluno</h2>
+						<h2>Pesquisar Aluno</h2>
 					</header>							
-					<form action="insereAlunoFator.jsp" name="cadastro" method="POST" onsubmit="return validacao();">
+					<form onsubmit="return validaPesquisa();">
 		                <div>
-		                    <input type="text" name="matricula" id="matr" placeholder="Matrícula" />
-		                    <input type="text" name="ano_corrente" placeholder="Ano em curso">	
+                    		<input type="text" name="matricula" placeholder="Matrícula" />
+                    		<input type="submit" name="pesquisar" value="Pesquisar" >	
 		                </div>
 
-		                <p id="ano_letivo">Ano letivo: </p>
+		                <div>
+		                	<p id=>Pontuação:</p>
+		                	<p id=>00</p>
+		                </div>
 
-		                <select id="ano" name="ano_letivo">
-		                    <option value="1">1°</option>
-		                    <option value="2">2°</option>
-		                    <option value="3">3°</option>
-		                    <option value="4">4°</option>
-		                </select>
+						<p>Ano Letivo</p>
+                                            <input type="radio" value="1" name="ano_letivo" id="primeiro_ano" />
+					    <label for="primeiro_ano">1°</label>
+					    <input type="radio" value="0" name="ano_letivo" id="segundo_ano" />
+					    <label for="segundo_ano">2°</label>
+					    <input type="radio" value="-1" name="ano_letivo" id="terceiro_ano" />
+					    <label for="terceiro_ano">3°</label>
+					    <input type="radio" value="-1" name="ano_letivo" id="quarto_ano" />
+					    <label for="quarto_ano">4°</label>
+
+
 		                <p>1 - Faltas Recorrentes?</p>
                                             <input type="radio" value="1" name="fator1" id="fator1_s" />
                                             <label for="fator1_s">Sim</label>
@@ -137,7 +145,7 @@
 					    <label for="fator9_d">Dúvida</label>
 					
 		                <p>10 - Vítima de Bullying?</p>
-		                <input type="radio" value="1" name="fator10" id="fator10_s" />
+                                            <input type="radio" value="1" name="fator10" id="fator10_s" />
 					    <label for="fator10_s">Sim</label>
 					    <input type="radio" value="0" name="fator10" id="fator10_n" />
 					    <label for="fator10_n">Não</label>
@@ -145,7 +153,7 @@
 					    <label for="fator10_d">Dúvida</label>
 					
 		                <p>11 - Distorção de idade/série?</p>
-		                <input type="radio" value="1" name="fator11" id="fator11_s" />
+                                            <input type="radio" value="1" name="fator11" id="fator11_s" />
 					    <label for="fator11_s">Sim</label>
 					    <input type="radio" value="0" name="fator11" id="fator11_n" />
 					    <label for="fator11_n">Não</label>
@@ -223,9 +231,9 @@
 					    <label for="fator20_n">Não</label>
 					    <input type="radio" value="-1" name="fator20" id="fator20_d" />
 					    <label for="fator20_d">Dúvida</label>
-					
-		                <p>21 - Possui problemas psicológicos?</p>
-                                            <input type="radio" value="-1" name="fator21" id="fator21_s" />
+                                            
+                                <p>21 - Possui problemas psicológicos?</p>
+                                            <input type="radio" value="1" name="fator21" id="fator21_s" />
 					    <label for="fator21_s">Sim</label>
 					    <input type="radio" value="0" name="fator21" id="fator21_n" />
 					    <label for="fator21_n">Não</label>
@@ -304,8 +312,8 @@
 					    <input type="radio" value="-1" name="fator30" id="fator30_d" />
 					    <label for="fator30_d">Dúvida</label>
 		                <br><br>
-					    <input type="submit" value="Enviar"/>
-					    <button type="button" class="clean" onclick="limpeza();">Limpar</button>
+					    <input type="submit" value="Alterar"/>
+					    <input type="submit" value="Excluir Aluno"/>
 					</form>
 				</section>
 			</div>

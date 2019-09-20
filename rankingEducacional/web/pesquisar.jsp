@@ -1,3 +1,10 @@
+<%-- 
+    Document   : pesquisar
+    Created on : 20/09/2019, 17:56:12
+    Author     : Jhon
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -27,7 +34,7 @@
 					<ul>
 						<li><a href="index.html">Início</a></li>
 						<li><a href="novo-aluno.html">Adicionar Aluno</a></li>
-						<li><a href="pesquisar.html">Pesquisar Aluno</a></li>
+						<li><a href="#">Pesquisar Aluno</a></li>
 						<li class="active"><a href="ranking.jsp">Ranking</a></li>
 					</ul>
 				</nav>
@@ -50,19 +57,22 @@
 					<header>
 						<h2>Pesquisar Aluno</h2>
 					</header>							
-                                    <form action="pesquisar.jsp" method="POST" onsubmit="return validaPesquisa();">
+					<form onsubmit="return validaPesquisa();">
 		                <div>
                     		<input type="text" name="matricula" placeholder="Matrícula" />
                     		<input type="submit" name="pesquisar" value="Pesquisar" >	
 		                </div>
-
+                                
+                                <%
+                                    // fazer um select em aluno fator pela matricula e armazenar em um objeto AlunoFator
+                                %>
 		                <div>
-		                	<p >Pontuação:</p>
-		                	<p >00</p>
+		                	<p id=>Pontuação:</p>
+		                	<p id=>00</p>
 		                </div>
 
 						<p>Ano Letivo</p>
-		                <input type="radio" value="1" name="ano_letivo" id="primeiro_ano" />
+                                            <input type="radio" value="1" name="ano_letivo" id="primeiro_ano" />
 					    <label for="primeiro_ano">1°</label>
 					    <input type="radio" value="0" name="ano_letivo" id="segundo_ano" />
 					    <label for="segundo_ano">2°</label>
@@ -73,15 +83,15 @@
 
 
 		                <p>1 - Faltas Recorrentes?</p>
-		                <input type="radio" value="1" name="fator1" id="fator1_s" />
-					    <label for="fator1_s">Sim</label>
+                                            <input type="radio" value="1" name="fator1" id="fator1_s" />
+                                            <label for="fator1_s">Sim</label>
 					    <input type="radio" value="0" name="fator1" id="fator1_n" />
 					    <label for="fator1_n">Não</label>
 					    <input type="radio" value="-1" name="fator1" id="fator1_d" />
 					    <label for="fator1_d">Dúvida</label>
 					
 		                <p>2 - Dificuldades no deslocamento até a escola?</p>
-		                <input type="radio" value="1" name="fator2" id="fator2_s" />
+                                            <input type="radio" value="1" name="fator2" id="fator2_s" />
 					    <label for="fator2_s">Sim</label>
 					    <input type="radio" value="0" name="fator2" id="fator2_n" />
 					    <label for="fator2_n">Não</label>
@@ -89,7 +99,7 @@
 					    <label for="fator2_d">Dúvida</label>
 					
 		                <p>3 - Problemas Comportamentais?</p>
-		                <input type="radio" value="1" name="fator3" id="fator3_s" />
+                                            <input type="radio" value="1" name="fator3" id="fator3_s" />
 					    <label for="fator3_s">Sim</label>
 					    <input type="radio" value="0" name="fator3" id="fator3_n" />
 					    <label for="fator3_n">Não</label>
@@ -97,7 +107,7 @@
 					    <label for="fator3_d">Dúvida</label>
 					
 		                <p>4 - Problemas Cognitivos?</p>
-		                <input type="radio" value="1" name="fator4" id="fator4_s" />
+                                            <input type="radio" value="1" name="fator4" id="fator4_s" />
 					    <label for="fator4_s">Sim</label>
 					    <input type="radio" value="0" name="fator4" id="fator4_n" />
 					    <label for="fator4_n">Não</label>
@@ -105,23 +115,23 @@
 					    <label for="fator4_d">Dúvida</label>
 					
 		                <p>5 - Interesse pelo curso/área?</p>
-		                <input type="radio" value="1" name="fator5" id="fator5_s" />
+                                            <input type="radio" value="1" name="fator5" id="fator5_s" />
 					    <label for="fator5_s">Sim</label>
 					    <input type="radio" value="0" name="fator5" id="fator5_n" />
 					    <label for="fator5_n">Não</label>
-					    <input type="radio" value=-1 name="fator5" id="fator5_d" />
+					    <input type="radio" value="-1" name="fator5" id="fator5_d" />
 					    <label for="fator5_d">Dúvida</label>
 					
 		                <p>6 - Defasagem Educacional?</p>
-		                <input type="radio" value="1" name="fator6" id="fator6_s" />
+                                            <input type="radio" value="1" name="fator6" id="fator6_s" />
 					    <label for="fator6_s">Sim</label>
 					    <input type="radio" value="0" name="fator6" id="fator6_n" />
 					    <label for="fator6_n">Não</label>
-					    <input type="radio" value="1" name="fator6" id="fator6_d" />
+					    <input type="radio" value="-1" name="fator6" id="fator6_d" />
 					    <label for="fator6_d">Dúvida</label>
 					
 		                <p>7 - Dificuldade de relacionamento com os colegas?</p>
-		                <input type="radio" value="1" name="fator7" id="fator7_s" />
+                                            <input type="radio" value="1" name="fator7" id="fator7_s" />
 					    <label for="fator7_s">Sim</label>
 					    <input type="radio" value="0" name="fator7" id="fator7_n" />
 					    <label for="fator7_n">Não</label>
@@ -129,7 +139,7 @@
 					    <label for="fator7_d">Dúvida</label>
 					
 		                <p>8 - Reprovado em escolas anteriores?</p>
-		                <input type="radio" value="1" name="fator8" id="fator8_s" />
+                                            <input type="radio" value="1" name="fator8" id="fator8_s" />
 					    <label for="fator8_s">Sim</label>
 					    <input type="radio" value="0" name="fator8" id="fator8_n" />
 					    <label for="fator8_n">Não</label>
@@ -137,7 +147,7 @@
 					    <label for="fator8_d">Dúvida</label>
 					
 		                <p>9 - Repetente no IFBA?</p>
-		                <input type="radio" value="1" name="fator9" id="fator9_s" />
+                                            <input type="radio" value="1" name="fator9" id="fator9_s" />
 					    <label for="fator9_s">Sim</label>
 					    <input type="radio" value="0" name="fator9" id="fator9_n" />
 					    <label for="fator9_n">Não</label>
@@ -145,7 +155,7 @@
 					    <label for="fator9_d">Dúvida</label>
 					
 		                <p>10 - Vítima de Bullying?</p>
-		                <input type="radio" value="1" name="fator10" id="fator10_s" />
+                                            <input type="radio" value="1" name="fator10" id="fator10_s" />
 					    <label for="fator10_s">Sim</label>
 					    <input type="radio" value="0" name="fator10" id="fator10_n" />
 					    <label for="fator10_n">Não</label>
@@ -153,7 +163,7 @@
 					    <label for="fator10_d">Dúvida</label>
 					
 		                <p>11 - Distorção de idade/série?</p>
-		                <input type="radio" value="1" name="fator11" id="fator11_s" />
+                                            <input type="radio" value="1" name="fator11" id="fator11_s" />
 					    <label for="fator11_s">Sim</label>
 					    <input type="radio" value="0" name="fator11" id="fator11_n" />
 					    <label for="fator11_n">Não</label>
@@ -161,7 +171,7 @@
 					    <label for="fator11_d">Dúvida</label>
 					
 		                <p>12 - Cotista?</p>
-		                <input type="radio" value="1" name="fator12" id="fator12_s" />
+                                            <input type="radio" value="1" name="fator12" id="fator12_s" />
 					    <label for="fator12_s">Sim</label>
 					    <input type="radio" value="0" name="fator12" id="fator12_n" />
 					    <label for="fator12_n">Não</label>
@@ -169,7 +179,7 @@
 					    <label for="fator12_d">Dúvida</label>
 					
 		                <p>13 - Reprovado na mesma disciplina por duas unidades?</p>
-		                <input type="radio" value="1" name="fator13" id="fator13_s" />
+                                            <input type="radio" value="1" name="fator13" id="fator13_s" />
 					    <label for="fator13_s">Sim</label>
 					    <input type="radio" value="0" name="fator13" id="fator13_n" />
 					    <label for="fator13_n">Não</label>
@@ -177,7 +187,7 @@
 					    <label for="fator13_d">Dúvida</label>
 					
 		                <p>14 - Possui disponibilidade de tempo para participar de atividades no turno oposto?</p>
-		                <input type="radio" value="1" name="fator14" id="fator14_s" />
+                                            <input type="radio" value="1" name="fator14" id="fator14_s" />
 					    <label for="fator14_s">Sim</label>
 					    <input type="radio" value="0" name="fator14" id="fator14_n" />
 					    <label for="fator14_n">Não</label>
@@ -185,7 +195,7 @@
 					    <label for="fator14_d">Dúvida</label>
 					
 		                <p>15 - Já concluiu o ensino médio em outra instituição?</p>
-		                <input type="radio" value="1" name="fator15" id="fator15_s" />
+                                            <input type="radio" value="1" name="fator15" id="fator15_s" />
 					    <label for="fator15_s">Sim</label>
 					    <input type="radio" value="0" name="fator15" id="fator15_n" />
 					    <label for="fator15_n">Não</label>
@@ -193,7 +203,7 @@
 					    <label for="fator15_d">Dúvida</label>
 					
 		                <p>16 - Possui vulnerabilidade socioeconômica?</p>
-		                <input type="radio" value="1" name="fator16" id="fator16_s" />
+                                            <input type="radio" value="1" name="fator16" id="fator16_s" />
 					    <label for="fator16_s">Sim</label>
 					    <input type="radio" value="0" name="fator16" id="fator16_n" />
 					    <label for="fator16_n">Não</label>
@@ -201,7 +211,7 @@
 					    <label for="fator16_d">Dúvida</label>
 					
 		                <p>17 - Tem filhos?</p>
-		                <input type="radio" value="1" name="fator17" id="fator17_s" />
+                                            <input type="radio" value="1" name="fator17" id="fator17_s" />
 					    <label for="fator17_s">Sim</label>
 					    <input type="radio" value="0" name="fator17" id="fator17_n" />
 					    <label for="fator17_n">Não</label>
@@ -209,7 +219,7 @@
 					    <label for="fator17_d">Dúvida</label>
 					
 		                <p>18 - Possui acompanhamento da família no processo de ensino/aprendizagem?</p>
-		                <input type="radio" value="1" name="fator18" id="fator18_s" />
+                                            <input type="radio" value="1" name="fator18" id="fator18_s" />
 					    <label for="fator18_s">Sim</label>
 					    <input type="radio" value="0" name="fator18" id="fator18_n" />
 					    <label for="fator18_n">Não</label>
@@ -217,7 +227,7 @@
 					    <label for="fator18_d">Dúvida</label>
 					
 		                <p>19 - Trabalha no turno oposto às aulas?</p>
-		                <input type="radio" value="1" name="fator19" id="fator19_s" />
+                                            <input type="radio" value="1" name="fator19" id="fator19_s" />
 					    <label for="fator19_s">Sim</label>
 					    <input type="radio" value="0" name="fator19" id="fator19_n" />
 					    <label for="fator19_n">Não</label>
@@ -225,15 +235,15 @@
 					    <label for="fator19_d">Dúvida</label>
 					
 		                <p>20 - Reside com tutor legal?</p>
-		                <input type="radio" value="1" name="fator20" id="fator20_s" />
+                                            <input type="radio" value="1" name="fator20" id="fator20_s" />
 					    <label for="fator20_s">Sim</label>
 					    <input type="radio" value="0" name="fator20" id="fator20_n" />
 					    <label for="fator20_n">Não</label>
 					    <input type="radio" value="-1" name="fator20" id="fator20_d" />
 					    <label for="fator20_d">Dúvida</label>
-					
-		                <p>21 - Possui problemas psicológicos?</p>
-		                <input type="radio" value="-1" name="fator21" id="fator21_s" />
+                                            
+                                <p>21 - Possui problemas psicológicos?</p>
+                                            <input type="radio" value="1" name="fator21" id="fator21_s" />
 					    <label for="fator21_s">Sim</label>
 					    <input type="radio" value="0" name="fator21" id="fator21_n" />
 					    <label for="fator21_n">Não</label>
@@ -241,7 +251,7 @@
 					    <label for="fator21_d">Dúvida</label>
 					
 		                <p>22 - Possui conflitos familiares?</p>
-		                <input type="radio" value="1" name="fator22" id="fator22_s" />
+                                            <input type="radio" value="1" name="fator22" id="fator22_s" />
 					    <label for="fator22_s">Sim</label>
 					    <input type="radio" value="0" name="fator22" id="fator22_n" />
 					    <label for="fator22_n">Não</label>
@@ -249,7 +259,7 @@
 					    <label for="fator22_d">Dúvida</label>
 					
 		                <p>23 - Possui acompanhamento da rede de proteção local (Conselho Tutelar/CRAS/CREAS/CAPS)?</p>
-		                <input type="radio" value="1" name="fator23" id="fator23_s" />
+                                            <input type="radio" value="1" name="fator23" id="fator23_s" />
 					    <label for="fator23_s">Sim</label>
 					    <input type="radio" value="0" name="fator23" id="fator23_n" />
 					    <label for="fator23_n">Não</label>
@@ -257,7 +267,7 @@
 					    <label for="fator23_d">Dúvida</label>
 					
 		                <p>24 - Está envolvido com drogas/atos infracionais?</p>
-		                <input type="radio" value="1" name="fator24" id="fator24_s" />
+                                            <input type="radio" value="1" name="fator24" id="fator24_s" />
 					    <label for="fator24_s">Sim</label>
 					    <input type="radio" value="0" name="fator24" id="fator24_n" />
 					    <label for="fator24_n">Não</label>
@@ -265,7 +275,7 @@
 					    <label for="fator24_d">Dúvida</label>
 					
 		                <p>25 - Tem problemas de saúde?</p>
-		                <input type="radio" value="1" name="fator25" id="fator25_s" />
+                                            <input type="radio" value="1" name="fator25" id="fator25_s" />
 					    <label for="fator25_s">Sim</label>
 					    <input type="radio" value="0" name="fator25" id="fator25_n" />
 					    <label for="fator25_n">Não</label>
@@ -273,7 +283,7 @@
 					    <label for="fator25_d">Dúvida</label>
 					
 		                <p>26 - O ambiente doméstico do estudante favorece o estudo?</p>
-		                <input type="radio" value="1" name="fator26" id="fator26_s" />
+                                            <input type="radio" value="1" name="fator26" id="fator26_s" />
 					    <label for="fator26_s">Sim</label>
 					    <input type="radio" value="0" name="fator26" id="fator26_n" />
 					    <label for="fator26_n">Não</label>
@@ -281,7 +291,7 @@
 					    <label for="fator26_d">Dúvida</label>
 					
 		                <p>27 - É cuidador de parentes no turno oposto (idoso, criança, pessoa com necessidade especial)?</p>
-		                <input type="radio" value="1" name="fator27" id="fator27_s" />
+                                            <input type="radio" value="1" name="fator27" id="fator27_s" />
 					    <label for="fator27_s">Sim</label>
 					    <input type="radio" value="0" name="fator27" id="fator27_n" />
 					    <label for="fator27_n">Não</label>
@@ -289,15 +299,15 @@
 					    <label for="fator27_d">Dúvida</label>
 					
 		                <p>28 - O estudante tem rotina de estudos?</p>
-		                <input type="radio" value="1" name="fator28" id="fator28_s" />
+                                            <input type="radio" value="1" name="fator28" id="fator28_s" />
 					    <label for="fator28_s">Sim</label>
-					    <input type="radio" value="0" name="fator28" id="fator28_n" />
+                            		    <input type="radio" value="0" name="fator28" id="fator28_n" />
 					    <label for="fator28_n">Não</label>
 					    <input type="radio" value="-1" name="fator28" id="fator28_d" />
 					    <label for="fator28_d">Dúvida</label>
 					
 		                <p>29 - Convive com alguma divergência e/ou intolerância religiosa?</p>
-		                <input type="radio" value="1" name="fator29" id="fator29_s" />
+                                            <input type="radio" value="1" name="fator29" id="fator29_s" />
 					    <label for="fator29_s">Sim</label>
 					    <input type="radio" value="0" name="fator29" id="fator29_n" />
 					    <label for="fator29_n">Não</label>
@@ -305,7 +315,7 @@
 					    <label for="fator29_d">Dúvida</label>
 					
 		                <p>30 - O estudante tem necessidades educativas especiais?</p>
-		                <input type="radio" value="1" name="fator30" id="fator30_s" />
+                                            <input type="radio" value="1" name="fator30" id="fator30_s" />
 					    <label for="fator30_s">Sim</label>
 					    <input type="radio" value="0" name="fator30" id="fator30_n" />
 					    <label for="fator30_n">Não</label>
