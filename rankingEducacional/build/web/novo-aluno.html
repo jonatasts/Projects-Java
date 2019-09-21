@@ -1,14 +1,3 @@
-<%-- 
-    Document   : pesquisar
-    Created on : 20/09/2019, 17:56:12
-    Author     : Jhon
---%>
-
-<%@page import="dao.RankingDAO"%>
-<%@page import="model.AlunoFator"%>
-<%@page import="dao.AlunoFatorDAO"%>
-<%@page import="controllers.AlunoFatorController"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -37,8 +26,8 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Início</a></li>
-						<li><a href="novo-aluno.html">Adicionar Aluno</a></li>
-						<li><a href="#">Pesquisar Aluno</a></li>
+						<li><a href="#">Adicionar Aluno</a></li>
+						<li><a href="pesquisar.html">Pesquisar Aluno</a></li>
 						<li class="active"><a href="ranking.jsp">Ranking</a></li>
 					</ul>
 				</nav>
@@ -59,40 +48,22 @@
 			<div id="content" class="container">
 				<section class="questionario">
 					<header>
-						<h2>Pesquisar Aluno</h2>
+						<h2>Novo Aluno</h2>
 					</header>							
-					<form onsubmit="return validaPesquisa();">
+					<form action="insereAlunoFator.jsp" name="cadastro" method="POST" onsubmit="return validacao();">
 		                <div>
-                    		<input type="text" name="matricula" placeholder="Matrícula" />
-                    		<input type="submit" name="pesquisar" value="Pesquisar" >	
-		                </div>
-                                
-                                <%
-                                    AlunoFatorDAO alunoFatorDAO  = new AlunoFatorDAO();
-                                    AlunoFator alunoFator = new AlunoFator();
-                                    int pontuacaoAluno = (new RankingDAO()).selectPontuacaoByMatricula("matricula_aluno");
-                                    
-                                    alunoFator = alunoFatorDAO.selectAlunoFatorByMatricula("matricula_aluno");
-                                    //Agora é so pegar os atributos do aluno fator passando a matricula
-                                    //e exibir nos lugares corretos
-                                    //Obs.: mudar o # das pasginas para atualizar quando clicar no icone da pagina
-                                    
-                                %>
-		                <div>
-		                	<p id=>Pontuação: 00</p>
+		                    <input type="text" name="matricula" id="matr" placeholder="Matrícula" />
+		                    <input type="text" name="ano_corrente" placeholder="Ano em curso">	
 		                </div>
 
-						<p>Ano Letivo</p>
-                                            <input type="radio" value="1" name="ano_letivo" id="primeiro_ano" />
-					    <label for="primeiro_ano">1°</label>
-					    <input type="radio" value="0" name="ano_letivo" id="segundo_ano" />
-					    <label for="segundo_ano">2°</label>
-					    <input type="radio" value="-1" name="ano_letivo" id="terceiro_ano" />
-					    <label for="terceiro_ano">3°</label>
-					    <input type="radio" value="-1" name="ano_letivo" id="quarto_ano" />
-					    <label for="quarto_ano">4°</label>
+		                <p id="ano_letivo">Ano letivo: </p>
 
-
+		                <select id="ano" name="ano_letivo">
+		                    <option value="1">1°</option>
+		                    <option value="2">2°</option>
+		                    <option value="3">3°</option>
+		                    <option value="4">4°</option>
+		                </select>
 		                <p>1 - Faltas Recorrentes?</p>
                                             <input type="radio" value="1" name="fator1" id="fator1_s" />
                                             <label for="fator1_s">Sim</label>
@@ -333,8 +304,8 @@
 					    <input type="radio" value="-1" name="fator30" id="fator30_d" />
 					    <label for="fator30_d">Dúvida</label>
 		                <br><br>
-					    <input type="submit" value="Alterar"/>
-					    <input type="submit" value="Excluir Aluno"/>
+					    <input type="submit" value="Enviar"/>
+					    <button type="button" class="clean" onclick="limpeza();">Limpar</button>
 					</form>
 				</section>
 			</div>
