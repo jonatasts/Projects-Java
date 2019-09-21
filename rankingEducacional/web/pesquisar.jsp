@@ -4,6 +4,10 @@
     Author     : Jhon
 --%>
 
+<%@page import="dao.RankingDAO"%>
+<%@page import="model.AlunoFator"%>
+<%@page import="dao.AlunoFatorDAO"%>
+<%@page import="controllers.AlunoFatorController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -64,7 +68,15 @@
 		                </div>
                                 
                                 <%
-                                    // fazer um select em aluno fator pela matricula e armazenar em um objeto AlunoFator
+                                    AlunoFatorDAO alunoFatorDAO  = new AlunoFatorDAO();
+                                    AlunoFator alunoFator = new AlunoFator();
+                                    int pontuacaoAluno = (new RankingDAO()).selectPontuacaoByMatricula("matricula_aluno");
+                                    
+                                    alunoFator = alunoFatorDAO.selectAlunoFatorByMatricula("matricula_aluno");
+                                    //Agora é so pegar os atributos do aluno fator passando a matricula
+                                    //e exibir nos lugares corretos
+                                    //Obs.: mudar o # das pasginas para atualizar quando clicar no icone da pagina
+                                    
                                 %>
 		                <div>
 		                	<p id=>Pontuação:</p>
