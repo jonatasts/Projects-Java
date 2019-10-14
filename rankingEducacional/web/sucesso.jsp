@@ -8,7 +8,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
@@ -28,7 +28,7 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Início</a></li>
-						<li><a href="#">Adicionar Aluno</a></li>
+						<li><a href="novo-aluno.html">Adicionar Aluno</a></li>
 						<li><a href="pesquisar.html">Pesquisar Aluno</a></li>
 						<li class="active"><a href="ranking.jsp">Ranking</a></li>
 					</ul>
