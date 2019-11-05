@@ -25,7 +25,7 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a href="index.html">InÃ­cio</a></li>
+						<li><a href="index.html">Início</a></li>
 						<li><a href="novo-aluno.html">Adicionar Aluno</a></li>
 						<li><a href="pesquisar.html">Pesquisar Aluno</a></li>
 						<li class="active"><a href="ranking.jsp">Ranking</a></li>
@@ -52,9 +52,16 @@
 					</header>							
 					<form action="pesquisar.jsp" onsubmit="return validaPesquisa();">
 		                <div>
-                    		<input type="text" name="matricula" placeholder="MatrÃ­cula" />
+                    		<input type="text" name="matricula" placeholder="Matrícula" />
                     		<input type="submit" name="pesquisar" value="Pesquisar" >	
 		                </div>
+                                            <% out.println("<p>1 - Faltas Recorrentes?</p>");
+                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator1\" id=\"fator1_s\" />");
+                                            out.println("<label for=\"fator1_s\">Sim</label>");
+                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator1\" id=\"fator1_n\" />");
+                                            out.println("<label for=\"fator1_n\">Não</label>");
+                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator1\" id=\"fator1_d\" />");
+                                            out.println("<label for=\"fator1_d\">Dúvida</label>"); %>
 					</form>
 				</section>
 			</div>
@@ -65,7 +72,7 @@
 		<div id="tweet">
 			<div class="container">
 				<section>
-					<blockquote>&ldquo;A educaÃ§Ã£o Ã© um processo social, Ã© desenvolvimento. NÃ£o Ã© a preparaÃ§Ã£o para a vida, Ã© a prÃ³pria vida.&rdquo; - John Dewey</blockquote>
+					<blockquote>&ldquo;A educação é um processo social, é desenvolvimento. Não é a preparação para a vida, é a própria vida.&rdquo; - John Dewey</blockquote>
 				</section>
 			</div>
 		</div>
@@ -77,7 +84,7 @@
 				<section>
 					<header>
 						<h2>Contate-nos</h2>
-						<span class="byline">Em caso de dÃºvidas, crÃ­ticas ou elogios, envie uma mensagem em um dos seguintes links</span>
+						<span class="byline">Em caso de dúvidas, críticas ou elogios, envie uma mensagem em um dos seguintes links</span>
 					</header>
 					<ul class="contact">
 						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>

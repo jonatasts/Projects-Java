@@ -32,7 +32,7 @@
 					<ul>
 						<li><a href="index.html">Início</a></li>
 						<li><a href="novo-aluno.html">Adicionar Aluno</a></li>
-						<li><a href="pesquisar.jsp">Pesquisar Aluno</a></li>
+						<li><a href="pesquisar.html">Pesquisar Aluno</a></li>
 						<li class="active"><a href="ranking.jsp">Ranking</a></li>
 					</ul>
 				</nav>
