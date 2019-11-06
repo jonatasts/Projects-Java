@@ -818,8 +818,8 @@
 		{
 			font-size: 1.4em;
 			color: #fff;
-			background-color: rgba(242,242,242,0.04);
-			border:1px solid #fff;
+			background-color: rgba(255,255,255,0.2);
+			border:1px solid rgba(255,255,255,0.3);
 			padding: 0.5em;
 			border-radius: 50%;
 			transition: all ease 0.3s;
@@ -1063,7 +1063,7 @@ input[type= radio]{
 }
 
 
-input[type=radio]:checked + label {
+input[type=radio]:checked + label{
   color: #fff;
   background: #3a3a3a;
   border-radius: 10%;
@@ -1173,10 +1173,7 @@ table th {
   }
   
   table td::before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
+    
     content: attr(data-label);
     float: left;
     font-weight: bold;

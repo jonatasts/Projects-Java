@@ -22,12 +22,6 @@
     int pontuacaoAluno = (new RankingDAO()).selectPontuacaoByMatricula(matricula);
 
     alunoFator = alunoFatorDAO.selectAlunoFatorByMatricula(matricula);
-    
-    
-    
-    
-    
-    
     /*
     out.println("<h2>" + alunoFator.getAnoEmCurso() + "</h2>");
     out.println("<h2>" + alunoFator.getMatriculaAluno()+ "</h2>");
@@ -111,26 +105,89 @@ out.println(<label for="fator1_d">Dúvida</label>);-->
 					</header>
                                 <form>
 				<% 
-                                out.println("<div><p id=>Pontuação: "+pontuacaoAluno+"</p></div>");
-                                out.println("<p>Ano Letivo</p>");
-                                out.println("<p>Ano Letivo</p>");
-                                out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" />");
-                                out.println("<label for=\"primeiro_ano\">1°</label>");
-                                out.println("<input type=\"radio\" value=\"0\" name=\"ano_letivo\" id=\"segundo_ano\" />");
-                                out.println("<label for=\"segundo_ano\">2°</label>");
-                                out.println("<input type=\"radio\" value=\"-1\" name=\"ano_letivo\" id=\"terceiro_ano\" />");
-                                out.println("<label for=\"terceiro_ano\">3°</label>");
-                                out.println("<input type=\"radio\" value=\"-1\" name=\"ano_letivo\" id=\"quarto_ano\" />");
-                                out.println("<label for=\"quarto_ano\">4°</label>");
+                                out.println("<div><p>Pontuação: "+pontuacaoAluno+"</p></div>");
+                                out.println("<p>Ano Em Curso: "+alunoFator.getAnoEmCurso()+"</p>");
+                                out.println("<p>Ano Letivo:</p>");
+                                switch(alunoFator.getAnoLetivo()){
+                                    case 1:
+                                        out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" checked=\"checked\"/>");
+                                        out.println("<label for=\"primeiro_ano\">1°</label>");
+                                        out.println("<input type=\"radio\" value=\"2\" name=\"ano_letivo\" id=\"segundo_ano\" />");
+                                        out.println("<label for=\"segundo_ano\">2°</label>");
+                                        out.println("<input type=\"radio\" value=\"3\" name=\"ano_letivo\" id=\"terceiro_ano\" />");
+                                        out.println("<label for=\"terceiro_ano\">3°</label>");
+                                        out.println("<input type=\"radio\" value=\"4\" name=\"ano_letivo\" id=\"quarto_ano\" />");
+                                        out.println("<label for=\"quarto_ano\">4°</label>");
+                                        break;
+                                    case 2:
+                                        out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" />");
+                                        out.println("<label for=\"primeiro_ano\">1°</label>");
+                                        out.println("<input type=\"radio\" value=\"2\" name=\"ano_letivo\" id=\"segundo_ano\" checked=\"checked\" />");
+                                        out.println("<label for=\"segundo_ano\">2°</label>");
+                                        out.println("<input type=\"radio\" value=\"3\" name=\"ano_letivo\" id=\"terceiro_ano\" />");
+                                        out.println("<label for=\"terceiro_ano\">3°</label>");
+                                        out.println("<input type=\"radio\" value=\"4\" name=\"ano_letivo\" id=\"quarto_ano\" />");
+                                        out.println("<label for=\"quarto_ano\">4°</label>");
+                                        break;
+                                    case 3:
+                                        out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" />");
+                                        out.println("<label for=\"primeiro_ano\">1°</label>");
+                                        out.println("<input type=\"radio\" value=\"2\" name=\"ano_letivo\" id=\"segundo_ano\" />");
+                                        out.println("<label for=\"segundo_ano\">2°</label>");
+                                        out.println("<input type=\"radio\" value=\"3\" name=\"ano_letivo\" id=\"terceiro_ano\" checked=\"checked\"/>");
+                                        out.println("<label for=\"terceiro_ano\">3°</label>");
+                                        out.println("<input type=\"radio\" value=\"4\" name=\"ano_letivo\" id=\"quarto_ano\" />");
+                                        out.println("<label for=\"quarto_ano\">4°</label>");
+                                        break;
+                                    case 4:
+                                        out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" />");
+                                        out.println("<label for=\"primeiro_ano\">1°</label>");
+                                        out.println("<input type=\"radio\" value=\"2\" name=\"ano_letivo\" id=\"segundo_ano\" />");
+                                        out.println("<label for=\"segundo_ano\">2°</label>");
+                                        out.println("<input type=\"radio\" value=\"3\" name=\"ano_letivo\" id=\"terceiro_ano\" />");
+                                        out.println("<label for=\"terceiro_ano\">3°</label>");
+                                        out.println("<input type=\"radio\" value=\"4\" name=\"ano_letivo\" id=\"quarto_ano\" checked=\"checked\"/>");
+                                        out.println("<label for=\"quarto_ano\">4°</label>");
+                                        break;    
+                                }
+                                
+                                
 
-
-                                out.println("<p>1 - Faltas Recorrentes?</p>");
-                                out.println("<input type=\"radio\" value=\"1\" name=\"fator1\" id=\"fator1_s\" />");
-                                out.println("<label for=\"fator1_s\">Sim</label>");
-                                out.println("<input type=\"radio\" value=\"0\" name=\"fator1\" id=\"fator1_n\" />");
-                                out.println("<label for=\"fator1_n\">Não</label>");
-                                out.println("<input type=\"radio\" value=\"-1\" name=\"fator1\" id=\"fator1_d\" />");
-                                out.println("<label for=\"fator1_d\">Dúvida</label>");
+                                for(int i = 0; i < alunoFator.getFatores().length;i++){    
+                                    out.println("<p>"+(i+1)+" - "+fatores.get(i).getDescricao()+"?</p>");
+                                    switch(alunoFator.getFatores(i)){
+                                        case 1:{
+                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" checked=\"checked\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_s\" >Sim</label>");
+                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
+                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
+                                            break;
+                                        }
+                                        
+                                        case 0:{
+                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_s\">Sim</label>");
+                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" checked=\"checked\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
+                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
+                                            break;
+                                        }
+                                        
+                                        default:{
+                                            out.println(alunoFator.getFatores(i));
+                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_s\">Sim</label>");
+                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
+                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" checked=\"checked\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
+                                            break;
+                                        }
+                                    }
+                                }
                                 %>
                                 </form>
                             </section>

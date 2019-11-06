@@ -10,17 +10,30 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+		<noscript>
+                    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+                    <link rel="stylesheet" href="css/skel-noscript.css" />
+                    <link rel="stylesheet" href="css/style.css" />
+                    <link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                <script src="js/datatables.min.js"></script>
                 <script src="js/skel.min.js"></script>
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-desktop.css" />
-		</noscript>
+                <script src="js/datatables.min.js"></script>
+                <script src='js/dataTables.buttons.min.js'
+                
+                <script> 
+                
+                    $('#myTable').DataTable( {
+                        buttons: [
+                            'copy', 'excel', 'pdf'
+                        ]
+                    } );
+                
+                </script>
+                
+		
 	</head>
 	<body>
 
@@ -55,9 +68,9 @@
 					<header>
 						<h2>Ranking</h2>
 					</header>
-					<table>
+					<table id="myTable">
 
-					  <p>Exibir:</p>
+					  <!--<p>Exibir:</p>
 
 					  <select>
 				  		<option value="10">10</option>
@@ -66,7 +79,7 @@
                                                 <option value="all">Tudo</option>
 					  </select>
 
-					  <button>Exportar</button>
+					  <button>Exportar</button>-->
 
 					  <thead>
 					    <tr>

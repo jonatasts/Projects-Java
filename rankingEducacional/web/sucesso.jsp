@@ -52,6 +52,7 @@
 					<header>
 						<h2>Aluno adicionado com sucesso !</h2>
 					</header>
+                                    <form>
                                     <%
                                         int pontuacao;
                                         String matricula = request.getParameter("matricula");
@@ -63,7 +64,8 @@
                                         
                                         out.println("<h2>A pontuação atual é: <span> "+pontuacao+" </span></h2>");
                                     %>
-				</section>
+                                    </form>
+                                </section>
 			</div>
 		</div>
 	<!-- /Main -->
