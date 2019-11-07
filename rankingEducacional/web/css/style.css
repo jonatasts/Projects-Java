@@ -1100,7 +1100,7 @@ input[type=submit]{
 }
 
 .ranking select{
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
 
 .ranking button{
@@ -1110,7 +1110,7 @@ input[type=submit]{
 table {
   border: 1px solid #000;
   border-collapse: collapse;
-  margin: 0;
+  margin: 1em 0px 0px 0px;
   padding: 0;
   width: 100%;
   table-layout: fixed;
