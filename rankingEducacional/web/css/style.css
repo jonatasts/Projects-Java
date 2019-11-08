@@ -1044,7 +1044,7 @@
 	margin: 20px 20px;
 }
 
-.questionario form p{
+.questionario form p, .questionario form h2{
     font-family: inherit;
     font-weight: 350;
 	color: #4c4c4c;
@@ -1082,11 +1082,11 @@ input[type=submit]{
 	margin-top: 20px;
 }
 
-.clean, input{
+.clean,input{
 	font-family: 'Roboto', sans-serif;
 	font-size: 11pt;
 	font-weight: 300;
-	line-height: 1.75em;
+	line-height: 3vh;
 	color: #000;
 }
 
@@ -1096,15 +1096,15 @@ input[type=submit]{
 /*********************************************************************************/
 
 .ranking{
-	text-align: center;
+    text-align: center;
 }
 
 .ranking select{
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 .ranking button{
-	margin: auto 5px;
+    margin: auto 5px;
 }
 
 table {
@@ -1183,4 +1183,44 @@ table th {
   table td:last-child {
     border-bottom: 0;
   }
+}
+
+#myTable_length{
+    float:left;
+}
+
+#myTable_filter{
+    float:right;
+}
+
+.dataTables_paginate{
+    float:right;
+}
+
+.dt-buttons{
+    float:left;
+}
+
+.dt-buttons button,.dataTables_paginate a{
+    margin: 0px;
+    font-family: 'FontAwesome', sans-serif;
+    color:#2e2e2e;
+    font-size: 0.8em;
+    padding: 7px 15px;
+    background-color: rgba(85,85,85,0.1);
+    border:1px solid rgba(85,85,85,0.2);
+    transition: all ease 0.3s;
+    cursor:pointer;
+    border-radius: 5%;
+}
+
+.dataTables_paginate a{
+    margin: auto 0.2em;
+}
+
+.dt-buttons button:hover,.dataTables_paginate a:hover{
+    color:#fff;
+    border:1px solid #fff;
+    text-decoration: none;
+    background-color:#5B00FE;
 }

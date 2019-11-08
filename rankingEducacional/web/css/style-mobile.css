@@ -264,4 +264,13 @@
 		margin: 0;
 		padding: 1em 1em;
 		font-size: 1.2em;
-	}		
+	}
+
+.dataTables_paginate{
+    float:none;
+    margin:1em;
+}
+
+.dt-buttons{
+    float:none;
+}
