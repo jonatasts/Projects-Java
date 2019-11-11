@@ -1048,7 +1048,7 @@
     font-family: inherit;
     font-weight: 350;
 	color: #4c4c4c;
-	font-size: 1.5em;
+	font-size: 1.4em;
 	display: block;
 	margin:35px auto;
 }
@@ -1077,6 +1077,25 @@ form label{
 	cursor: pointer;
 	padding: 5px 20px;
 }
+
+.obs,
+textarea {
+    font-size: .9rem;
+    letter-spacing: 1px;
+}
+textarea {
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.obs {
+    display: block;
+    margin-bottom: 10px;
+}
+
 
 input[type=submit]{
 	margin-top: 20px;

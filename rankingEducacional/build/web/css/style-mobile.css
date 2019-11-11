@@ -10,7 +10,7 @@
 
 	body,input,textarea,select
 	{
-		line-height: 1.75em;
+		line-height: 3vh;
 		font-size: 10.5pt;
 		letter-spacing: 0;
 	}

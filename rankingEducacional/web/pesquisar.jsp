@@ -101,7 +101,7 @@ out.println(<label for="fator1_d">Dúvida</label>);-->
 			<div id="content" class="container">
                             <section class="questionario">
                                 <header>
-						<h2>Pesquisar Aluno</h2>
+						<% out.println("<h2>Aluno: "+alunoFator.getMatriculaAluno()+" </h2>"); %>
 					</header>
                                 <form>
 				<% 
@@ -177,7 +177,6 @@ out.println(<label for="fator1_d">Dúvida</label>);-->
                                         }
                                         
                                         default:{
-                                            out.println(alunoFator.getFatores(i));
                                             out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" />");
                                             out.println("<label for=\"fator"+(i+1)+"_s\">Sim</label>");
                                             out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" />");
@@ -189,6 +188,9 @@ out.println(<label for="fator1_d">Dúvida</label>);-->
                                     }
                                 }
                                 %>
+                                <br><br>
+                                <input type="submit" name="alterar" value="Alterar" />
+                                <input type="submit" name="excluir" value="Excluir" />
                                 </form>
                             </section>
                         </div>
