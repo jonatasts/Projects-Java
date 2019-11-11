@@ -30,6 +30,7 @@
                 alunoFator.setMatriculaAluno((request.getParameter("matricula")));
                 alunoFator.setAnoEmCurso(Integer.parseInt(request.getParameter("ano_corrente")));
                 alunoFator.setAnoLetivo(Integer.parseInt(request.getParameter("ano_letivo")));
+                alunoFator.setObservacao((request.getParameter("observacao")));
                 alunoFator.setFatores(pontos);
                 alunoFatorDAO.insert(alunoFator);
                 

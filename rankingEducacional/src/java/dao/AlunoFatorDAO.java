@@ -28,9 +28,9 @@ public class AlunoFatorDAO {
     }
     
      public void insert(AlunoFator alunoFator) throws SQLException {
-        String insertAluno = "INSERT INTO alunofator (matriculaaluno, anoemCurso, anoletivo, pf1, pf2, pf3 , pf4, "
+        String insertAluno = "INSERT INTO alunofator (matriculaaluno, anoemCurso, anoletivo, observacao, pf1, pf2, pf3 , pf4, "
                            + "pf5, pf6, pf7, pf8, pf9, pf10, pf11, pf12, pf13, pf14, pf15, pf16, pf17, pf18, pf19, "
-                           + "pf20, pf21, pf22, pf23, pf24, pf25, pf26, pf27, pf28, pf29, pf30) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                           + "pf20, pf21, pf22, pf23, pf24, pf25, pf26, pf27, pf28, pf29, pf30) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
        
         preparedStatement = conexao.prepareStatement(insertAluno);
 
@@ -38,10 +38,12 @@ public class AlunoFatorDAO {
             preparedStatement.setString(1, alunoFator.getMatriculaAluno());
             preparedStatement.setInt(2, alunoFator.getAnoEmCurso());
             preparedStatement.setInt(3, alunoFator.getAnoLetivo());
+            preparedStatement.setString(4,alunoFator.getObservacao());
             
             for (int i = 0; i < 30; i++) {
-                 preparedStatement.setInt(i+4,alunoFator.getFatores(i));
+                 preparedStatement.setInt(i+5,alunoFator.getFatores(i));
             }
+            
             
             preparedStatement.execute();
         } catch (RuntimeException erro) {
@@ -64,9 +66,10 @@ public class AlunoFatorDAO {
                 alunoFator.setMatriculaAluno(resultSet.getString("matriculaaluno"));
                 alunoFator.setAnoEmCurso(resultSet.getInt("anoEmCurso"));
                 alunoFator.setAnoLetivo(resultSet.getInt("anoLetivo"));
+                alunoFator.setObservacao(resultSet.getString("observacao"));
                 
                 for (int i = 0; i < 30; i++) {
-                 alunoFator.setFatores(i, (resultSet.getInt(i+4)));
+                 alunoFator.setFatores(i, (resultSet.getInt(i+5)));
                 }
                 alunoFatores.add(alunoFator);
             }
@@ -97,6 +100,7 @@ public class AlunoFatorDAO {
                 alunoFator.setMatriculaAluno(resultSet.getString("matriculaaluno"));
                 alunoFator.setAnoEmCurso(resultSet.getInt("anoEmCurso"));
                 alunoFator.setAnoLetivo(resultSet.getInt("anoLetivo"));
+                alunoFator.setObservacao(resultSet.getString("observacao"));
                 
                 for (int i = 0; i < 30; i++) {
                  alunoFator.setFatores(i, (resultSet.getInt(i+4)));

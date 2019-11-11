@@ -186,7 +186,9 @@ out.println(<label for="fator1_d">Dúvida</label>);-->
                                             break;
                                         }
                                     }
+                                    
                                 }
+                                out.println("Observação: " + alunoFator.getObservacao());
                                 %>
                                 <br><br>
                                 <input type="submit" name="alterar" value="Alterar" />

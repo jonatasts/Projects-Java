@@ -13,6 +13,7 @@ CREATE TABLE alunoFator(
 matriculaAluno CHARACTER(20) NOT NULL,
 anoEmCurso INT NOT NULL,
 anoLetivo INT NOT NULL,
+observacao CHARACTER(500) NOT NULL,
 pf1 INT,
 pf2 INT,
 pf3 INT,
@@ -44,6 +45,7 @@ pf28 INT,
 pf29 INT,
 pf30 INT,
 CONSTRAINT pk_matricula_anoEmCurso_anoLetivo PRIMARY KEY (matriculaAluno,anoEmCurso,anoLetivo), UNIQUE (matriculaAluno));
+
 CREATE TABLE ranking (
 idAluno  CHARACTER(20) NOT NULL,
 anoEmCurso INT NOT NULL,

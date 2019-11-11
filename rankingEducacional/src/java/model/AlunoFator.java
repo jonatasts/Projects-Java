@@ -6,6 +6,7 @@ public class AlunoFator {
     private int anoEmCurso;
     private int anoLetivo;
     private int[] fatores = new int[30];
+    private String observacao;
 
     public AlunoFator() {
     }
@@ -53,4 +54,14 @@ public class AlunoFator {
     public int getTamanhoFatores() {
         return this.fatores.length;
     }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+    
+    
 }
