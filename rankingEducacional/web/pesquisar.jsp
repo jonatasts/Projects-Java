@@ -103,7 +103,7 @@ out.println(<label for="fator1_d">Dúvida</label>);-->
                                 <header>
 						<% out.println("<h2>Aluno: "+alunoFator.getMatriculaAluno()+" </h2>"); %>
 					</header>
-                                <form>
+                                <form action="">
 				<% 
                                 out.println("<div><p>Pontuação: "+pontuacaoAluno+"</p></div>");
                                 out.println("<p>Ano Em Curso: "+alunoFator.getAnoEmCurso()+"</p>");
@@ -191,8 +191,8 @@ out.println(<label for="fator1_d">Dúvida</label>);-->
                                 out.println("Observação: " + alunoFator.getObservacao());
                                 %>
                                 <br><br>
-                                <input type="submit" name="alterar" value="Alterar" />
-                                <input type="submit" name="excluir" value="Excluir" />
+                                <input type="submit" name="btn" value="Alterar" />
+                                <input type="submit" name="btn" value="Excluir" />
                                 </form>
                             </section>
                         </div>

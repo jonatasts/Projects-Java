@@ -15,10 +15,19 @@
     </head>
     <body>
         <%
+            
+            //Verificar a pagina de add aluno fator parar criar a parte de alteração
+            //Criar a pagina de remoção e exibir para as duas ações uma tela igual a de sucesso.jsp
             AlunoFatorDAO alunoFatorDAO = new AlunoFatorDAO();
             AlunoFator alunoFator = new AlunoFator();
-            
-            alunoFator.setMatriculaAluno((request.getParameter("matricula")));
+
+            alunoFator.setMatriculaAluno(request.getParameter("matricula"));
+
+            if (request.getParameter("btn").equalsIgnoreCase("alterar")) {
+                request.getRequestDispatcher("RegistradorController").forward(request, response);
+            } else {
+                request.getRequestDispatcher("ObtemLucro.jsp").forward(request, response);
+            }
         %>
     </body>
 </html>
