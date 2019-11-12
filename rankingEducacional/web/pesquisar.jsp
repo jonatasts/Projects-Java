@@ -186,9 +186,9 @@ out.println(<label for="fator1_d">Dúvida</label>);-->
                                             break;
                                         }
                                     }
-                                    
                                 }
-                                out.println("Observação: " + alunoFator.getObservacao());
+                                out.println("<label class=\"obs\" for=\"obs\">Observações:</label>");
+                                out.println("<textarea id=\"obs\" name=\"observacao\" rows=\"5\" cols=\"33\">"+alunoFator.getObservacao()+"</textarea>");
                                 %>
                                 <br><br>
                                 <input type="submit" name="btn" value="Alterar" />
