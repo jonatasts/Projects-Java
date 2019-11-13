@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.AlunoFator;
 
 public class AlunoFatorDAO {
@@ -19,11 +17,11 @@ public class AlunoFatorDAO {
     private Statement statement;
     private Connection conexao;
 
-    public AlunoFatorDAO() {
+    public AlunoFatorDAO() throws SQLException {
         try {
             conexao = banco.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(AlunoFatorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RuntimeException erro) {
+            throw new RuntimeException("Erro conexão com banco em AlunoFatorDAO: " + erro);
         }
     }
     
@@ -74,8 +72,8 @@ public class AlunoFatorDAO {
                 alunoFatores.add(alunoFator);
             }
 
-        } catch (SQLException ex) {
-            Logger.getLogger(AlunoFatorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RuntimeException erro) {
+            throw new RuntimeException("Erro select: " + erro);
         }
 
         resultSet.close();
@@ -103,17 +101,66 @@ public class AlunoFatorDAO {
                 alunoFator.setObservacao(resultSet.getString("observacao"));
                 
                 for (int i = 0; i < 30; i++) {
-                 alunoFator.setFatores(i, (resultSet.getInt(i+4)));
+                 alunoFator.setFatores(i, (resultSet.getInt(i+5)));
                 }
             }
 
-        } catch (SQLException ex) {
-            Logger.getLogger(RankingDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RuntimeException erro) {
+            throw new RuntimeException("Erro select by matricula: " + erro);
         }
 
         //resultSet.close();
         conexao.close();
         return alunoFator;
+    }
+    
+    public void update(AlunoFator alunoFator) throws SQLException {
+        String updateAluno = "UPDATE alunofator SET anoemCurso = ?, anoletivo = ?, observacao = ?, pf1 = ?, pf2 = ?, pf3 = ? , pf4 = ?, "
+                           + "pf5 = ?, pf6 = ?, pf7 = ?, pf8 = ?, pf9 = ?, pf10 = ?, pf11 = ?, pf12 = ?, pf13 = ?, pf14 = ?, pf15 = ?, pf16 = ?, pf17 = ?, pf18 = ?, pf19 = ?, "
+                           + "pf20 = ?, pf21 = ?, pf22 = ?, pf23 = ?, pf24 = ?, pf25 = ?, pf26 = ?, pf27 = ?, pf28 = ?, pf29 = ?, pf30 = ? WHERE matriculaaluno = ?";
+       
+        preparedStatement = conexao.prepareStatement(updateAluno);
+
+        try {
+            
+            preparedStatement.setInt(1, alunoFator.getAnoEmCurso());
+            preparedStatement.setInt(2, alunoFator.getAnoLetivo());
+            preparedStatement.setString(3,alunoFator.getObservacao());
+            
+            for (int i = 0; i < 30; i++) {
+                 preparedStatement.setInt(i+4,alunoFator.getFatores(i));
+            }
+            
+            preparedStatement.setString(34, alunoFator.getMatriculaAluno());
+            
+            
+            preparedStatement.execute();
+        } catch (RuntimeException erro) {
+            throw new RuntimeException("Erro update: " + erro);
+        }
+    }
+    
+    public void delete(String matricula) throws SQLException {
+        String deleteAlunoRanking = "DELETE FROM ranking WHERE idaluno = ?";
+        String deleteAlunoFator = "DELETE FROM alunofator WHERE matriculaaluno = ?";
+        PreparedStatement preparedStmt;
+        
+        try {
+            preparedStmt = conexao.prepareStatement(deleteAlunoRanking);
+            preparedStmt.setString(1,matricula);
+            preparedStmt.execute();
+            
+            preparedStatement = conexao.prepareStatement(deleteAlunoFator);
+            preparedStatement.setString(1,matricula);
+            preparedStatement.execute();
+            
+            
+            conexao.close();
+        } catch (RuntimeException erro) {
+            throw new RuntimeException("Erro Delete: " + erro);
+        }
+        
+        
     }
     
 }
