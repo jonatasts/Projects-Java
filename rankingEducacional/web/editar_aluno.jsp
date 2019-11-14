@@ -75,7 +75,7 @@
                                     alunoFator.setFatores(pontos);
                                     alunoFatorDAO.update(alunoFator);
                                     
-                                    out.println("<h2>As informações do aluno: <b>"+alunoFator.getMatriculaAluno()+"</b> foram atualizadas com sucesso!</h2>");
+                                    out.println("<h2 style=\"font-size: 1.5em;\">As informações do aluno: <b>"+alunoFator.getMatriculaAluno()+"</b> foram atualizadas com sucesso!</h2>");
 
                                 } catch (RuntimeException erro) {
                                     throw new RuntimeException("Erro update aluno e fatores: " + erro);
@@ -84,7 +84,7 @@
                             else if (request.getParameter("btn").equalsIgnoreCase("excluir")) {
                                 String mat_aluno = alunoFator.getMatriculaAluno();
                                 alunoFatorDAO.delete(mat_aluno);
-                                out.println("<h2>O aluno <b>"+mat_aluno+"</b> foi removido com sucesso !</h2>");
+                                out.println("<h2 style=\"font-size: 1.5em;\">O aluno <b>"+mat_aluno+"</b> foi removido com sucesso !</h2>");
                             }
                         %>
                     </header>

@@ -25,7 +25,7 @@ public class PostgresDatabase extends IDatabase {
             Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://localhost:5432/rankingeducacional";
             String usuario = "postgres";
-            String senha = "000000";
+            String senha = "postgres";
             return DriverManager.getConnection(url, usuario, senha);
         } catch (ClassNotFoundException | SQLException erro) {
             throw new RuntimeException("Erro de conexao: " + erro);

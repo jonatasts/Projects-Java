@@ -27,10 +27,10 @@
         <script src="js/init.js"></script>
         <script src="js/index.js"></script>
         <noscript>
-        <link rel="stylesheet" href="css/skel-noscript.css" />
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/style-desktop.css" />
-        </noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
     </head>
     <body>
 
@@ -98,10 +98,11 @@
                                         <input type="submit" name="pesquisar" value="Pesquisar" >	
                                     </div>
                                 </form>
-                        <form action="editar_aluno.jsp" method="POST">
+                        
                             <%    
                             } //Exibe as informações do aluno obtidas do banco
                             else {
+                                out.println("<form action=\"editar_aluno.jsp\" method=\"POST\">");
                                 out.println("<div><p>Pontuação: " + pontuacaoAluno + "</p></div>");
                                 out.println("<p>Ano Em Curso: " + alunoFator.getAnoEmCurso() + "</p>");
                                 out.println("<p>Ano Letivo:</p>");
@@ -153,32 +154,32 @@
                                     out.println("<p>" + (i + 1) + " - " + fatores.get(i).getDescricao() + "?</p>");
                                     switch (alunoFator.getFatores(i)) {
                                         case 1: {
-                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_s\" checked=\"checked\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_s\" >Sim</label>");
-                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_n\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_n\">Não</label>");
-                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_d\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_d\">Dúvida</label>");
+                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" checked=\"checked\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_s\" >Sim</label>");
+                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
+                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
                                             break;
                                         }
 
                                         case 0: {
-                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_s\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_s\">Sim</label>");
-                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_n\" checked=\"checked\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_n\">Não</label>");
-                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_d\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_d\">Dúvida</label>");
+                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_s\">Sim</label>");
+                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" checked=\"checked\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
+                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
                                             break;
                                         }
 
                                         default: {
-                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_s\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_s\">Sim</label>");
-                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_n\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_n\">Não</label>");
-                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator" + (i + 1) + "\" id=\"fator" + (i + 1) + "_d\" checked=\"checked\" />");
-                                            out.println("<label for=\"fator" + (i + 1) + "_d\">Dúvida</label>");
+                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_s\">Sim</label>");
+                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
+                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" checked=\"checked\" />");
+                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
                                             break;
                                         }
                                     }
