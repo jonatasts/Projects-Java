@@ -261,10 +261,26 @@
 			padding-top: 0px;
 			border-top: none;
 		}
-							
+			
+
 
 	/* Buttons */
 		
+	.btns{
+		display: block;
+		width: 100%;
+	}
+	
+	.cadastrar{
+		float: left;
+		margin-left: 6em;
+	}
+
+	.ranking{
+		float: right;
+		margin-right: 7em;
+	}
+
 	.button
 	{
 		position: relative;
@@ -484,6 +500,7 @@
 		.fa-external-link:before{content:"\f08e"}
 		.fa-sign-in:before{content:"\f090"}
 		.fa-trophy:before{content:"\f091"}
+		.fa-chart-bar:before{content:"\f080"}
 		.fa-github-square:before{content:"\f092"}
 		.fa-upload:before{content:"\f093"}
 		.fa-lemon-o:before{content:"\f094"}
@@ -783,7 +800,7 @@
 			top: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(0,0,0,0.4);
+			background: rgba(0,0,0,0.7);
 		}
 
 /*********************************************************************************/
@@ -1012,7 +1029,7 @@
 			top: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(0,0,0,0.4);
+			background: rgba(0,0,0,0.6);
 		}
 	
 		#tweet section
