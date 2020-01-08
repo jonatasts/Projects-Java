@@ -136,7 +136,7 @@
 	                                                    
 	                                                    out.println("<tr>");
 	                                                    out.println("<td data-label=\"Classificação\">"+ contador +"</td>");
-	                                                    out.println("<td data-label=\"Matrícula\">"+ matricula +"</td>");
+	                                                    out.println("<td data-label=\"Matrícula\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"pesquisar.jsp?matricula="+ matricula +"\">"+ matricula +"</a></td>");
 	                                                    out.println("<td data-label=\"Ano em Curso\">"+ anoEmCurso +"</td>");
 	                                                    out.println("<td data-label=\"Pontuação\">"+ pontuacao +"</td>");
 	                                                    if(observacao){
