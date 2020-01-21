@@ -186,7 +186,7 @@
 
                                 }
                                 out.println("<label class=\"obs\" for=\"obs\">Observações:</label>");
-                                out.println("<textarea id=\"obs\" name=\"observacao\" rows=\"5\" cols=\"33\">"+alunoFator.getObservacao()+"</textarea>");
+                                out.println("<textarea id=\"obs\" name=\"observacao\" rows=\"5\" cols=\"33\">"+ new String(alunoFator.getObservacao().getBytes("ISO-8859-1"),"UTF-8")+"</textarea>");
                                 out.println("<br><br>");
                                 out.println("<input type=\"submit\" name=\"btn\" value=\"Alterar\" />");
                                 out.println("<input type=\"submit\" name=\"btn\" value=\"Excluir\" />");
