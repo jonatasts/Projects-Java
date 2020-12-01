@@ -42,6 +42,7 @@ INSERT INTO fatorAnoEmCurso ( idfator , anoEmCurso) VALUES
 ('f9', 1),
 ('f3', 2);
 
+/*
 INSERT INTO alunoFator (matriculaAluno, anoEmCurso,anoLetivo, observacao, pf1, pf2, pf3 , pf4, pf5, pf6, pf7, pf8, pf9, pf10, pf11, pf12, pf13, pf14, pf15, pf16, pf17, pf18, pf19, pf20, pf21, pf22, pf23, pf24, pf25, pf26, pf27, pf28, pf29, pf30) VALUES
 ('2019120325', 2019, 1, 'Observação 1', 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1),
 ('2019120326', 2019, 2, 'Observação 2', 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0),
@@ -56,3 +57,4 @@ INSERT INTO alunoFator (matriculaAluno, anoEmCurso,anoLetivo, observacao, pf1, p
 ('2019120335', 2019, 4, 'Observação 11', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1),
 ('2019120336', 2019, 4, 'Observação 12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 ('2019120337', 2019, 2, 'Observação 13', -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
+*/
