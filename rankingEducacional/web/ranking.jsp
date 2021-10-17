@@ -45,12 +45,12 @@
 	                            "language": {
 	                                "lengthMenu": "Exibir _MENU_ ",
 	                                "zeroRecords": "Nenhum registro encontrado",
-	                                "info": "Exibindo página _PAGE_ de _PAGES_",
+	                                "info": "Exibindo pï¿½gina _PAGE_ de _PAGES_",
 	                                "infoEmpty": "Nenhum registro encontrado",
 	                                "infoFiltered": "(Filtrado de _MAX_ registros)",
 	                                "search": "Pesquisar",
                                         "paginate": {
-                                            "next": "Próxima",
+                                            "next": "Prï¿½xima",
                                             "previous": "Anterior"
                                         }
 	                            }
@@ -66,7 +66,7 @@
 					<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Início</a></li>
+							<li><a href="index.html">Inï¿½cio</a></li>
 							<li><a href="novo-aluno.html">Adicionar Aluno</a></li>
 							<li><a href="pesquisar.html">Pesquisar Aluno</a></li>
 							<li class="active"><a href="ranking.jsp">Ranking</a></li>
@@ -106,11 +106,11 @@
 
 						  <thead>
 						    <tr>
-						      <th scope="col">Classificação</th>
-						      <th scope="col">Matrícula</th>
+						      <th scope="col">Classificaï¿½ï¿½o</th>
+						      <th scope="col">Matrï¿½cula</th>
 	                                              <th scope="col">Ano em Curso</th>
-						      <th scope="col">Pontuação</th>
-						      <th scope="col">Observação</th>
+						      <th scope="col">Pontuaï¿½ï¿½o</th>
+						      <th scope="col">Observaï¿½ï¿½o</th>
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -135,15 +135,15 @@
 	                                                    observacao = rankings.get(i).getObservacao();
 	                                                    
 	                                                    out.println("<tr>");
-	                                                    out.println("<td data-label=\"Classificação\">"+ contador +"</td>");
-	                                                    out.println("<td data-label=\"Matrícula\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"pesquisar.jsp?matricula="+ matricula +"\">"+ matricula +"</a></td>");
+	                                                    out.println("<td data-label=\"Classificaï¿½ï¿½o\">"+ contador +"</td>");
+	                                                    out.println("<td data-label=\"Matrï¿½cula\"><a rel=\"noopener noreferrer\" href=\"pesquisar.jsp?matricula="+ matricula +"\">"+ matricula +"</a></td>");
 	                                                    out.println("<td data-label=\"Ano em Curso\">"+ anoEmCurso +"</td>");
-	                                                    out.println("<td data-label=\"Pontuação\">"+ pontuacao +"</td>");
+	                                                    out.println("<td data-label=\"Pontuaï¿½ï¿½o\">"+ pontuacao +"</td>");
 	                                                    if(observacao){
-	                                                        out.println("<td data-label=\"Observação\">SIM</td>");
+	                                                        out.println("<td data-label=\"Observaï¿½ï¿½o\">SIM</td>");
 	                                                    }
 	                                                    else {
-	                                                        out.println("<td data-label=\"Observação\">NÃO</td>");
+	                                                        out.println("<td data-label=\"Observaï¿½ï¿½o\">Nï¿½O</td>");
 	                                                    }
 	                                                    out.println("</tr>");
 	                                                    contador++;
@@ -165,7 +165,7 @@
 			<div id="tweet">
 				<div class="container">
 					<section>
-						<blockquote>&ldquo;A educação é um processo social, é desenvolvimento. Não é a preparação para a vida, é a própria vida.&rdquo; - John Dewey</blockquote>
+						<blockquote>&ldquo;A educaï¿½ï¿½o ï¿½ um processo social, ï¿½ desenvolvimento. Nï¿½o ï¿½ a preparaï¿½ï¿½o para a vida, ï¿½ a prï¿½pria vida.&rdquo; - John Dewey</blockquote>
 					</section>
 				</div>
 			</div>
@@ -177,7 +177,7 @@
 					<section>
 						<header>
 							<h2>Contate-nos</h2>
-							<span class="byline">Em caso de dúvidas, críticas ou elogios, envie uma mensagem em um dos seguintes links</span>
+							<span class="byline">Em caso de dï¿½vidas, crï¿½ticas ou elogios, envie uma mensagem em um dos seguintes links</span>
 						</header>
 						<ul class="contact">
 							<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
