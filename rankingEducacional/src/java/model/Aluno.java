@@ -1,13 +1,13 @@
 package model;
 
-public class AlunoFator {
+public class Aluno {
 
   private String matriculaAluno;
   private int serieEmCurso;
   private int anoLetivo;
   private String observacao;
 
-  public Alunor() {}
+  public Aluno() {}
 
   public String getMatriculaAluno() {
     return matriculaAluno;
