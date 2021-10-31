@@ -27,16 +27,41 @@ public class AlunoFatorDAO {
     }
   }
 
-  public void insert(AlunoFator alunoFator) throws SQLException {
-    String insertAluno =
-      "INSERT INTO aluno_fator (aluno_id, fator_id, resposta) VALUES (?,?,?)";
+  public void insert(ArrayList<AlunoFator> alunosFatores) throws SQLException {
+    String insertAlunoFator =
+      "INSERT INTO aluno_fator (aluno_id, fator_id, resposta) 
+       VALUES (?,?,?), (?,?,?), (?,?,?), (?,?,?), (?,?,?),
+       (?,?,?), (?,?,?), (?,?,?), (?,?,?), (?,?,?),
+       (?,?,?), (?,?,?), (?,?,?), (?,?,?), (?,?,?),
+       (?,?,?), (?,?,?), (?,?,?), (?,?,?), (?,?,?),
+       (?,?,?), (?,?,?), (?,?,?), (?,?,?), (?,?,?),
+       (?,?,?), (?,?,?), (?,?,?), (?,?,?), (?,?,?);";
 
-    preparedStatement = conexao.prepareStatement(insertAluno);
+    preparedStatement = conexao.prepareStatement(insertAlunoFator);
 
     try {
-      preparedStatement.setString(1, alunoFator.getMatriculaAluno());
-      preparedStatement.setString(2, alunoFator.getFatorId());
-      preparedStatement.setInt(3, alunoFator.getResposta());
+      int value = 1;
+
+      for (int i = 0; i < 30; i++) {
+        int positionAlunoId = value;
+        int positionFatorId = value + 1;
+        int positionPontuacao = value + 2;
+
+        preparedStatement.setString(
+          positionAlunoId,
+          alunosFatores[0].getMatriculaAluno()
+        );
+        preparedStatement.setString(
+          positionFatorId,
+          alunosFatores[i].getFatorId()
+        );
+        preparedStatement.setInt(
+          positionPontuacao,
+          alunosFatores[i].getResposta()
+        );
+
+        value += 2;
+      }
 
       preparedStatement.execute();
     } catch (RuntimeException erro) {
@@ -96,10 +121,10 @@ public class AlunoFatorDAO {
   }
 
   public void update(AlunoFator alunoFator) throws SQLException {
-    String updateAluno =
+    String updateAlunoFator =
       "UPDATE aluno_fator SET fator_id = ?, resposta = ? WHERE aluno_id = ?";
 
-    preparedStatement = conexao.prepareStatement(updateAluno);
+    preparedStatement = conexao.prepareStatement(updateAlunoFator);
 
     try {
       preparedStatement.setString(1, alunoFator.getFatorId());
@@ -114,12 +139,13 @@ public class AlunoFatorDAO {
   }
 
   public void delete(String matricula) throws SQLException {
-    String deleteAlunoRanking = "DELETE FROM ranking WHERE id_aluno_fator = ?";
+    String deleteAlunoFatorRanking =
+      "DELETE FROM ranking WHERE id_aluno_fator = ?";
     String deleteAlunoFator = "DELETE FROM aluno_fator WHERE aluno_id = ?";
     PreparedStatement preparedStmt;
 
     try {
-      preparedStmt = conexao.prepareStatement(deleteAlunoRanking);
+      preparedStmt = conexao.prepareStatement(deleteAlunoFatorRanking);
       preparedStmt.setString(1, matricula);
       preparedStmt.execute();
 
