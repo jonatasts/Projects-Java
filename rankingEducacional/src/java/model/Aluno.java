@@ -3,7 +3,7 @@ package model;
 public class AlunoFator {
 
   private String matriculaAluno;
-  private int anoEmCurso;
+  private int serieEmCurso;
   private int anoLetivo;
   private String observacao;
 
@@ -17,12 +17,12 @@ public class AlunoFator {
     this.matriculaAluno = matriculaAluno;
   }
 
-  public int getAnoEmCurso() {
-    return anoEmCurso;
+  public int getSerieEmCurso() {
+    return serieEmCurso;
   }
 
-  public void setAnoEmCurso(int anoEmCurso) {
-    this.anoEmCurso = anoEmCurso;
+  public void setSerieEmCurso(int serieEmCurso) {
+    this.serieEmCurso = serieEmCurso;
   }
 
   public int getAnoLetivo() {
