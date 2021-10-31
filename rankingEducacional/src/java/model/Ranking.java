@@ -1,53 +1,53 @@
 package model;
 
 public class Ranking {
-    private String idAluno;
-    private int anoEmCurso;
-    private int pontuacao;
-    private boolean observacao = false;
 
-    public Ranking() {
-    }
+  private String idAlunoFator;
+  private int serieEmCurso;
+  private int pontuacao;
+  private boolean observacao = false;
 
-    public Ranking(String idAluno, int pontuacao) {
-        this.idAluno = idAluno;
-        this.pontuacao = pontuacao;
-    }
+  public Ranking() {}
 
-    public String getIdAluno() {
-        return idAluno;
-    }
+  public Ranking(String idAlunoFator, int pontuacao) {
+    this.idAluno = idAlunoFator;
+    this.pontuacao = pontuacao;
+  }
 
-    public void setIdAluno(String idAluno) {
-        this.idAluno = idAluno;
-    }
+  public String getIdAlunoFator() {
+    return idAlunoFator;
+  }
 
-    public int getAnoEmCurso() {
-        return anoEmCurso;
-    }
+  public void setIdAlunoFator(String idAlunoFator) {
+    this.idAlunoFator = idAlunoFator;
+  }
 
-    public void setAnoEmCurso(int anoEmCurso) {
-        this.anoEmCurso = anoEmCurso;
-    }
-    
-    public int getPontuacao() {
-        return pontuacao;
-    }
+  public int getSerieEmCurso() {
+    return serieEmCurso;
+  }
 
-    public void setPontuacao(int pontuacao) {
-        this.pontuacao = pontuacao;
-    }
+  public void setSerieEmCurso(int serieEmCurso) {
+    this.serieEmCurso = serieEmCurso;
+  }
 
-    public boolean getObservacao() {
-        return observacao;
-    }
+  public int getPontuacao() {
+    return pontuacao;
+  }
 
-    public void setObservacao(boolean observacao) {
-        this.observacao = observacao;
-    }
-    
-    @Override
-    public String toString() {
-        return "" + idAluno + " |  " + pontuacao; 
-    }
+  public void setPontuacao(int pontuacao) {
+    this.pontuacao = pontuacao;
+  }
+
+  public boolean getObservacao() {
+    return observacao;
+  }
+
+  public void setObservacao(boolean observacao) {
+    this.observacao = observacao;
+  }
+
+  @Override
+  public String toString() {
+    return "" + idAluno + " |  " + pontuacao;
+  }
 }
