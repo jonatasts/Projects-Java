@@ -9,7 +9,7 @@ function validacao() {
     alert("Você precisa preencher o número de matrícula!");
     return false;
   } else if ($("input[name=ano_corrente")[0].value === "") {
-    alert("Você precisa preencher o ano corrente!");
+    alert("Você precisa preencher o ano letivo!");
     return false;
   } else {
     for (var i = 0; i < fatores; i++) {
