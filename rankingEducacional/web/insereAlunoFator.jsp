@@ -5,9 +5,11 @@
 --%>
 
 <%@page import="java.io.PrintStream"%>
-<%@page import="dao.FatorDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Aluno"%>
 <%@page import="model.AlunoFator"%>
 <%@page import="dao.AlunoFatorDAO"%>
+<%@page import="dao.AlunoDAO"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -21,23 +23,35 @@
     <body>
         <%
             try {
+                String redirectURL = "sucesso.jsp";
+                String matricula = request.getParameter("matricula");
+                int serieEmCurso = Integer.parseInt(request.getParameter("serie_em_curso"));
+                int anoLetivo = Integer.parseInt(request.getParameter("ano_letivo"));
+                AlunoDAO alunoDAO = new AlunoDAO();
                 AlunoFatorDAO alunoFatorDAO = new AlunoFatorDAO();
+                Aluno aluno = new Aluno();
                 AlunoFator alunoFator = new AlunoFator();
-                int[] pontos = new int[30];
+                ArrayList<AlunoFator> alunosFatores = new ArrayList<AlunoFator>();
 
                 for (int i = 0; i < 30; i++) {
-                    pontos[i] = Integer.parseInt(request.getParameter("fator" + (i + 1)));
+                    AlunoFator alunoFatorIterable = new AlunoFator();
+
+                    alunoFatorIterable.setMatriculaAluno(matricula);
+                    alunoFatorIterable.setFatorId("fator" + (i + 1));
+                    alunoFatorIterable.setResposta(Integer.parseInt(request.getParameter("fator" + (i + 1))));
+
+                    alunosFatores.add(alunoFatorIterable);
                 }
                 
-                alunoFator.setMatriculaAluno((request.getParameter("matricula")));
-                alunoFator.setAnoEmCurso(Integer.parseInt(request.getParameter("ano_corrente")));
-                alunoFator.setAnoLetivo(Integer.parseInt(request.getParameter("ano_letivo")));
-                alunoFator.setObservacao(java.net.URLDecoder.decode(((String[])request.getParameterMap().get("observacao"))[0], "UTF-8"));
-                alunoFator.setFatores(pontos);
-                alunoFatorDAO.insert(alunoFator);
-                String redirectURL = "sucesso.jsp";
-                request.getRequestDispatcher(redirectURL).forward(request, response);
+                aluno.setMatriculaAluno(matricula);
+                aluno.setSerieEmCurso(serieEmCurso);
+                aluno.setAnoLetivo(anoLetivo);
+                aluno.setObservacao(java.net.URLDecoder.decode(((String[])request.getParameterMap().get("observacao"))[0], "UTF-8"));
                 
+                alunoDAO.insert(aluno);
+                alunoFatorDAO.insert(alunosFatores);
+                
+                request.getRequestDispatcher(redirectURL).forward(request, response);
             } catch (RuntimeException erro) {
                 throw new RuntimeException("Erro insert aluno e fator: " + erro);
             }
