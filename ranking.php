@@ -123,7 +123,7 @@
 							<tr>
 								<th scope="col">Classificacão</th>
 								<th scope="col">Matrícula</th>
-								<th scope="col">Ano em Curso</th>
+								<th scope="col">Série em Curso</th>
 								<th scope="col">Pontuação</th>
 								<th scope="col">Observação</th>
 							</tr>
@@ -151,7 +151,7 @@
 									out.println("<tr>");
 									out.println("<td data-label=\"Classificacão\">"+ contador +"</td>");
 									out.println("<td data-label=\"Matrícula\"><a rel=\"noopener noreferrer\" href=\"pesquisar.jsp?matricula="+ matricula +"\">"+ matricula +"</a></td>");
-									out.println("<td data-label=\"Ano em Curso\">"+ anoEmCurso +"</td>");
+									out.println("<td data-label=\"Série em Curso\">"+ anoEmCurso +"</td>");
 									out.println("<td data-label=\"Pontuação\">"+ pontuacao +"</td>");
 									if(observacao){
 										out.println("<td data-label=\"Observação\">SIM</td>");
