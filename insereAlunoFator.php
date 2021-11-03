@@ -17,39 +17,42 @@
 </head>
 
 <body>
-    <!-- try {
-                String redirectURL = "sucesso.jsp";
-                String matricula = request.getParameter("matricula");
-                int serieEmCurso = Integer.parseInt(request.getParameter("serie_em_curso"));
-                int anoLetivo = Integer.parseInt(request.getParameter("ano_letivo"));
-                AlunoDAO alunoDAO = new AlunoDAO();
-                AlunoFatorDAO alunoFatorDAO = new AlunoFatorDAO();
-                Aluno aluno = new Aluno();
-                AlunoFator alunoFator = new AlunoFator();
-                ArrayList<AlunoFator> alunosFatores = new ArrayList<AlunoFator>();
+    <?php
 
-                for (int i = 0; i < 30; i++) {
-                    AlunoFator alunoFatorIterable = new AlunoFator();
+    try {
+        //     $redirectURL = "sucesso.jsp";
+        //     $matricula = request.getParameter("matricula");
+        //     $serieEmCurso = Integer.parseInt(request.getParameter("serie_em_curso"));
+        //     $anoLetivo = Integer.parseInt(request.getParameter("ano_letivo"));
+        //     $alunoDAO = new AlunoDAO();
+        //     $alunoFatorDAO = new AlunoFatorDAO();
+        //     $aluno = new Aluno();
+        //     $alunoFator = new AlunoFator();
+        //     $alunosFatores = [];
 
-                    alunoFatorIterable.setMatriculaAluno(matricula);
-                    alunoFatorIterable.setFatorId("fator" + (i + 1));
-                    alunoFatorIterable.setResposta(Integer.parseInt(request.getParameter("fator" + (i + 1))));
+        //     for ($i = 0; $i < 30; $i++) {
+        //         $alunoFatorIterable = new AlunoFator();
 
-                    alunosFatores.add(alunoFatorIterable);
-                }
-                
-                aluno.setMatriculaAluno(matricula);
-                aluno.setSerieEmCurso(serieEmCurso);
-                aluno.setAnoLetivo(anoLetivo);
-                aluno.setObservacao(java.net.URLDecoder.decode(((String[])request.getParameterMap().get("observacao"))[0], "UTF-8"));
-                
-                alunoDAO.insert(aluno);
-                alunoFatorDAO.insert(alunosFatores);
-                
-                request.getRequestDispatcher(redirectURL).forward(request, response);
-            } catch (RuntimeException erro) {
-                throw new RuntimeException("Erro insert aluno e fator: " + erro);
-            } -->
+        //         alunoFatorIterable.setMatriculaAluno(matricula);
+        //         alunoFatorIterable.setFatorId("fator" + (i + 1));
+        //         alunoFatorIterable.setResposta(Integer.parseInt(request.getParameter("fator" + (i + 1))));
+
+        //         alunosFatores.add(alunoFatorIterable);
+        //     }
+
+        //     aluno.setMatriculaAluno(matricula);
+        //     aluno.setSerieEmCurso(serieEmCurso);
+        //     aluno.setAnoLetivo(anoLetivo);
+        //     aluno.setObservacao(java.net.URLDecoder.decode(((String[])request.getParameterMap().get("observacao"))[0], "UTF-8"));
+
+        //     alunoDAO.insert(aluno);
+        //     alunoFatorDAO.insert(alunosFatores);
+
+        //     request.getRequestDispatcher(redirectURL).forward(request, response);
+    } catch (Exception $e) {
+        echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+    }
+    ?>
 </body>
 
 </html>
