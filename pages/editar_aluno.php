@@ -68,7 +68,7 @@ include_once "../App/controllers/alunoFatorController.php";
                     $alunoFatorController = AlunoFatorController::getInstance($connection);
 
                     $matriculaAluno = $_SESSION['matricula'];
-                    $serieEmCurso = $_SESSION['serieEmCurso'];
+                    $serieEmCurso = pg_escape_string(trim(!empty($_POST['serie_em_curso']) ? $_POST['serie_em_curso'] : null));
                     $observacao = pg_escape_string(trim(!empty($_POST['observacao']) ? $_POST['observacao'] : null));
 
                     $aluno->setMatriculaAluno($matriculaAluno);
@@ -86,8 +86,8 @@ include_once "../App/controllers/alunoFatorController.php";
                     }
 
                     if (strcasecmp($_POST['btn'], 'alterar') === 0) {
-                        $alunoFatorController->update($alunoFatores);
                         $alunoController->update($aluno);
+                        $alunoFatorController->update($alunoFatores);
                         echo "<h2 style=\"font-size: 1.5em;\">As informações do aluno: <b>{$aluno->getMatriculaAluno()}</b> foram atualizadas com sucesso!</h2>";
                     } else if (strcasecmp($_POST['btn'], 'excluir') === 0) {
                         $alunoFatorController->delete($aluno->getMatriculaAluno());
