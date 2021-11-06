@@ -13,7 +13,7 @@ $anoLetivo = pg_escape_string(trim(!empty($_POST['ano_letivo']) ? $_POST['ano_le
 $observacao = pg_escape_string(trim(!empty($_POST['observacao']) ? $_POST['observacao'] : null));
 
 $aluno = new Aluno();
-$alunosFatores = [];
+$alunoFatores = [];
 $alunoController = AlunoController::getInstance($connection);
 $alunoFatorController = AlunoFatorController::getInstance($connection);
 
@@ -29,11 +29,11 @@ for ($i = 0; $i < 30; $i++) {
     $alunoFator->setFatorId("f" . ($i + 1));
     $alunoFator->setResposta(pg_escape_string(trim($_POST["fator" . ($i + 1)])));
 
-    $alunosFatores[] =  $alunoFator;
+    $alunoFatores[] =  $alunoFator;
 }
 
 $alunoController->insertAluno($aluno);
-$alunoFatorController->insertAlunosFatores($alunosFatores);
+$alunoFatorController->insertAlunoFatores($alunoFatores);
 
 $_SESSION['pontuacao'] = "???";
 
