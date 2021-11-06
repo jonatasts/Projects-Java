@@ -34,6 +34,31 @@ class AlunoFatorController
 
     public function selectAlunoByMatricula($matricula)
     {
+        try {
+            $query = "SELECT * FROM aluno_fator WHERE aluno_id = '$matricula';";
+            $alunosFatores = [];
+
+            $result = pg_query($this->connection, $query);
+
+            if ($result) {
+                while ($row = pg_fetch_assoc($result)) {
+                    $alunoFator = new AlunoFator();
+
+                    $alunoFator->setMatriculaAluno($row['aluno_id']);
+                    $alunoFator->setFatorId($row['fator_id']);
+                    $alunoFator->setResposta($row['resposta']);
+
+                    $alunosFatores[] = $alunoFator;
+                }
+
+                return $alunosFatores;
+            }
+
+            return null;
+        } catch (Exception $e) {
+            //echo $e->getMessage();
+            return false;
+        }
     }
 
     public function update()
