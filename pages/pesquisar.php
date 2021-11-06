@@ -1,11 +1,16 @@
-<!-- <%@page import="model.Fator"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="dao.FatorDAO"%>
-<%@page import="dao.RankingDAO"%>
-<%@page import="model.AlunoFator"%>
-<%@page import="dao.AlunoFatorDAO"%>
-<%@page import="controllers.AlunoFatorController"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<?php
+session_start();
+
+require_once "../App/db/connection.php";
+include_once "../App/models/aluno.php";
+include_once "../App/models/alunoFator.php";
+include_once "../App/models/fator.php";
+include_once "../App/controllers/alunoController.php";
+include_once "../App/controllers/alunoFatorController.php";
+include_once "../App/controllers/fatorController.php";
+
+?>
+
 <!DOCTYPE HTML>
 
 <html>
@@ -59,133 +64,141 @@
         <div id="content" class="container">
             <section class="questionario">
                 <header>
-                    <!-- String matricula = request.getParameter("matricula");
-                            HttpSession sessao = request.getSession();
-                            
-                            session.setAttribute("matricula",matricula);
-                            
-                            int pontuacaoAluno = (new RankingDAO()).selectPontuacaoByMatricula(matricula);
-                            FatorDAO fatorDAO = new FatorDAO();
-                            ArrayList<Fator> fatores = fatorDAO.select();
-                            AlunoFatorDAO alunoFatorDAO = new AlunoFatorDAO();
-                            AlunoFator alunoFator = new AlunoFator();
+                    <?php
+                    $matricula = $_GET['matricula'];
+                    $alunoController = AlunoController::getInstance($connection);
+                    $alunoFatorController = AlunoFatorController::getInstance($connection);
+                    $fatorController = FatorController::getInstance($connection);
 
-                            alunoFator = alunoFatorDAO.selectAlunoFatorByMatricula(matricula);
-                            String matriculaAlunoBanco = alunoFator.getMatriculaAluno();
-                            String anoEmCurso = Integer.toString(alunoFator.getAnoEmCurso());
-                            
-                            session.setAttribute("ano_em_curso",anoEmCurso);
-                            
-                            if (matriculaAlunoBanco == null) {
-                                out.println("<h2>Aluno não econtrado ! </h2>");
-                            } else {
-                                out.println("<h2>Aluno: " + alunoFator.getMatriculaAluno() + " </h2>");
-                            } -->
+                    $aluno = $alunoController->selectAlunoByMatricula($matricula);
+
+                    $alunosFatores = $alunoFatorController->selectAlunoByMatricula($matricula);
+
+                    $fatores = $fatorController->selectAllFatores();
+
+                    $_SESSION['matricula'] = $aluno->getMatriculaAluno();
+                    $_SESSION['serieEmCurso'] = $aluno->getMatriculaAluno();
+
+
+                    // ------ $pontuacaoAluno = (new RankingDAO()).selectPontuacaoByMatricula(matricula);
+                    $pontuacaoAluno = '???';
+
+
+
+                    if (!$aluno) {
+                        echo "<h2>Aluno não econtrado! </h2>";
+                    } else {
+                        echo "<h2>Aluno: {$aluno->getMatriculaAluno()} </h2>";
+                    }
+                    ?>
                 </header>
-                <%
-                            if (matriculaAlunoBanco == null) {// Exibe o campo de pesquisa novamente ou um link para atualizar a página
-                            %>
-                <form action="pesquisar.jsp" onsubmit="return validaPesquisa();" method="POST">
-                    <p style="font-size: 16px;">Informe a matrícula do aluno !</p>
-                    <div style="margin-top: -50px;">
-                        <input type="text" name="matricula" placeholder="Matrícula" />
-                        <input type="submit" name="pesquisar" value="Pesquisar">
-                    </div>
-                </form>
+                <?php
+                if (!$aluno) {
+                ?>
+                    <form action="pesquisar.jsp" onsubmit="return validaPesquisa();" method="POST">
+                        <p style="font-size: 16px;">Informe a matrícula do aluno !</p>
+                        <div style="margin-top: -50px;">
+                            <input type="text" name="matricula" placeholder="Matrícula" />
+                            <input type="submit" name="pesquisar" value="Pesquisar">
+                        </div>
+                        <h1 style="font-size: 16px; color:red; margin-top: 10px;">Não há aluno cadastrado com essa matrícula!</h1>
 
-                <%    
-                            } //Exibe as informações do aluno obtidas do banco
-                            else {
-                                out.println("<form action=\"editar_aluno.jsp\" method=\"POST\">");
-                                out.println("<div><p>Pontuação: " + pontuacaoAluno + "</p></div>");
-                                out.println("<p>Série Em Curso: " + alunoFator.getAnoEmCurso() + "</p>");
-                                out.println("<p>Ano Letivo:</p>");
+                    </form>
 
-                                switch (alunoFator.getAnoLetivo()) {
-                                    case 1:
-                                        out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" checked=\"checked\"/>");
-                                        out.println("<label for=\"primeiro_ano\">1°</label>");
-                                        out.println("<input type=\"radio\" value=\"2\" name=\"ano_letivo\" id=\"segundo_ano\" />");
-                                        out.println("<label for=\"segundo_ano\">2°</label>");
-                                        out.println("<input type=\"radio\" value=\"3\" name=\"ano_letivo\" id=\"terceiro_ano\" />");
-                                        out.println("<label for=\"terceiro_ano\">3°</label>");
-                                        out.println("<input type=\"radio\" value=\"4\" name=\"ano_letivo\" id=\"quarto_ano\" />");
-                                        out.println("<label for=\"quarto_ano\">4°</label>");
-                                        break;
-                                    case 2:
-                                        out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" />");
-                                        out.println("<label for=\"primeiro_ano\">1°</label>");
-                                        out.println("<input type=\"radio\" value=\"2\" name=\"ano_letivo\" id=\"segundo_ano\" checked=\"checked\" />");
-                                        out.println("<label for=\"segundo_ano\">2°</label>");
-                                        out.println("<input type=\"radio\" value=\"3\" name=\"ano_letivo\" id=\"terceiro_ano\" />");
-                                        out.println("<label for=\"terceiro_ano\">3°</label>");
-                                        out.println("<input type=\"radio\" value=\"4\" name=\"ano_letivo\" id=\"quarto_ano\" />");
-                                        out.println("<label for=\"quarto_ano\">4°</label>");
-                                        break;
-                                    case 3:
-                                        out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" />");
-                                        out.println("<label for=\"primeiro_ano\">1°</label>");
-                                        out.println("<input type=\"radio\" value=\"2\" name=\"ano_letivo\" id=\"segundo_ano\" />");
-                                        out.println("<label for=\"segundo_ano\">2°</label>");
-                                        out.println("<input type=\"radio\" value=\"3\" name=\"ano_letivo\" id=\"terceiro_ano\" checked=\"checked\"/>");
-                                        out.println("<label for=\"terceiro_ano\">3°</label>");
-                                        out.println("<input type=\"radio\" value=\"4\" name=\"ano_letivo\" id=\"quarto_ano\" />");
-                                        out.println("<label for=\"quarto_ano\">4°</label>");
-                                        break;
-                                    case 4:
-                                        out.println("<input type=\"radio\" value=\"1\" name=\"ano_letivo\" id=\"primeiro_ano\" />");
-                                        out.println("<label for=\"primeiro_ano\">1°</label>");
-                                        out.println("<input type=\"radio\" value=\"2\" name=\"ano_letivo\" id=\"segundo_ano\" />");
-                                        out.println("<label for=\"segundo_ano\">2°</label>");
-                                        out.println("<input type=\"radio\" value=\"3\" name=\"ano_letivo\" id=\"terceiro_ano\" />");
-                                        out.println("<label for=\"terceiro_ano\">3°</label>");
-                                        out.println("<input type=\"radio\" value=\"4\" name=\"ano_letivo\" id=\"quarto_ano\" checked=\"checked\"/>");
-                                        out.println("<label for=\"quarto_ano\">4°</label>");
-                                        break;
+                <?php
+                } else {
+                    echo "<form action=\"editar_aluno.jsp\" method=\"POST\">";
+                    echo "<div><p>Pontuação: $pontuacaoAluno</p></div>";
+                    echo "<p>Ano Letivo: {$aluno->getAnoLetivo()}</p>";
+                    echo "<p>Série Em Curso:</p>";
+
+                    switch ($aluno->getSerieEmCurso()) {
+                        case 1:
+                            echo "<input type=\"radio\" value=\"1\" name=\"serie_em_curso\" id=\"primeiro_ano\" checked=\"checked\"/>";
+                            echo "<label for=\"primeiro_ano\">1°</label>";
+                            echo "<input type=\"radio\" value=\"2\" name=\"serie_em_curso\" id=\"segundo_ano\" />";
+                            echo "<label for=\"segundo_ano\">2°</label>";
+                            echo "<input type=\"radio\" value=\"3\" name=\"serie_em_curso\" id=\"terceiro_ano\" />";
+                            echo "<label for=\"terceiro_ano\">3°</label>";
+                            echo "<input type=\"radio\" value=\"4\" name=\"serie_em_curso\" id=\"quarto_ano\" />";
+                            echo "<label for=\"quarto_ano\">4°</label>";
+                            break;
+                        case 2:
+                            echo "<input type=\"radio\" value=\"1\" name=\"serie_em_curso\" id=\"primeiro_ano\" />";
+                            echo "<label for=\"primeiro_ano\">1°</label>";
+                            echo "<input type=\"radio\" value=\"2\" name=\"serie_em_curso\" id=\"segundo_ano\" checked=\"checked\" />";
+                            echo "<label for=\"segundo_ano\">2°</label>";
+                            echo "<input type=\"radio\" value=\"3\" name=\"serie_em_curso\" id=\"terceiro_ano\" />";
+                            echo "<label for=\"terceiro_ano\">3°</label>";
+                            echo "<input type=\"radio\" value=\"4\" name=\"serie_em_curso\" id=\"quarto_ano\" />";
+                            echo "<label for=\"quarto_ano\">4°</label>";
+                            break;
+                        case 3:
+                            echo "<input type=\"radio\" value=\"1\" name=\"serie_em_curso\" id=\"primeiro_ano\" />";
+                            echo "<label for=\"primeiro_ano\">1°</label>";
+                            echo "<input type=\"radio\" value=\"2\" name=\"serie_em_curso\" id=\"segundo_ano\" />";
+                            echo "<label for=\"segundo_ano\">2°</label>";
+                            echo "<input type=\"radio\" value=\"3\" name=\"serie_em_curso\" id=\"terceiro_ano\" checked=\"checked\"/>";
+                            echo "<label for=\"terceiro_ano\">3°</label>";
+                            echo "<input type=\"radio\" value=\"4\" name=\"serie_em_curso\" id=\"quarto_ano\" />";
+                            echo "<label for=\"quarto_ano\">4°</label>";
+                            break;
+                        case 4:
+                            echo "<input type=\"radio\" value=\"1\" name=\"serie_em_curso\" id=\"primeiro_ano\" />";
+                            echo "<label for=\"primeiro_ano\">1°</label>";
+                            echo "<input type=\"radio\" value=\"2\" name=\"serie_em_curso\" id=\"segundo_ano\" />";
+                            echo "<label for=\"segundo_ano\">2°</label>";
+                            echo "<input type=\"radio\" value=\"3\" name=\"serie_em_curso\" id=\"terceiro_ano\" />";
+                            echo "<label for=\"terceiro_ano\">3°</label>";
+                            echo "<input type=\"radio\" value=\"4\" name=\"serie_em_curso\" id=\"quarto_ano\" checked=\"checked\"/>";
+                            echo "<label for=\"quarto_ano\">4°</label>";
+                            break;
+                    }
+
+                    for ($i = 0; $i < count($alunosFatores); $i++) {
+                        echo "<p>" . ($i + 1) . " - " . $fatores[$i]->getDescricao() . "?</p>";
+                        switch ($alunosFatores[$i]->getResposta()) {
+                            case 1: {
+                                    echo "<input type=\"radio\" value=\"1\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_s\" checked=\"checked\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_s\" >Sim</label>";
+                                    echo "<input type=\"radio\" value=\"0\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_n\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_n\">Não</label>";
+                                    echo "<input type=\"radio\" value=\"-1\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_d\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_d\">Dúvida</label>";
+                                    break;
                                 }
 
-                                for (int i = 0; i < alunoFator.getFatores().length; i++) {
-                                    out.println("<p>" + (i + 1) + " - " + fatores.get(i).getDescricao() + "?</p>");
-                                    switch (alunoFator.getFatores(i)) {
-                                        case 1: {
-                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" checked=\"checked\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_s\" >Sim</label>");
-                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
-                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
-                                            break;
-                                        }
-
-                                        case 0: {
-                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_s\">Sim</label>");
-                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" checked=\"checked\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
-                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
-                                            break;
-                                        }
-
-                                        default: {
-                                            out.println("<input type=\"radio\" value=\"1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_s\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_s\">Sim</label>");
-                                            out.println("<input type=\"radio\" value=\"0\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_n\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_n\">Não</label>");
-                                            out.println("<input type=\"radio\" value=\"-1\" name=\"fator"+(i+1)+"\" id=\"fator"+(i+1)+"_d\" checked=\"checked\" />");
-                                            out.println("<label for=\"fator"+(i+1)+"_d\">Dúvida</label>");
-                                            break;
-                                        }
-                                    }
-
+                            case 0: {
+                                    echo "<input type=\"radio\" value=\"1\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_s\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_s\">Sim</label>";
+                                    echo "<input type=\"radio\" value=\"0\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_n\" checked=\"checked\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_n\">Não</label>";
+                                    echo "<input type=\"radio\" value=\"-1\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_d\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_d\">Dúvida</label>";
+                                    break;
                                 }
-                                out.println("<label class=\"obs\" for=\"obs\">Observações:</label>");
-                                out.println("<textarea id=\"obs\" name=\"observacao\" rows=\"5\" cols=\"33\">"+ new String(alunoFator.getObservacao().getBytes("ISO-8859-1"),"UTF-8")+"</textarea>");
-                                out.println("<br><br>");
-                                out.println("<input type=\"submit\" name=\"btn\" value=\"Alterar\" />");
-                                out.println("<input type=\"submit\" name=\"btn\" value=\"Excluir\" />");
-                            }
-                        %>
+
+                            default: {
+                                    echo "<input type=\"radio\" value=\"1\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_s\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_s\">Sim</label>";
+                                    echo "<input type=\"radio\" value=\"0\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_n\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_n\">Não</label>";
+                                    echo "<input type=\"radio\" value=\"-1\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_d\" checked=\"checked\" />";
+                                    echo "<label for=\"fator" . ($i + 1) . "_d\">Dúvida</label>";
+                                    break;
+                                }
+                        }
+                    }
+
+                    echo "<br><br>";
+                    echo "<label class=\"obs\" for=\"obs\">Observações:</label>";
+                    echo "<textarea id=\"obs\" name=\"observacao\" rows=\"5\" cols=\"33\">{$aluno->getObservacao()}</textarea>";
+                    echo "<br><br>";
+                    echo "<input type=\"submit\" name=\"btn\" value=\"Alterar\" />";
+                    echo "<input type=\"submit\" name=\"btn\" value=\"Excluir\" />";
+                }
+
+                ?>
                 </form>
             </section>
         </div>
