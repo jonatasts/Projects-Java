@@ -63,6 +63,20 @@ class AlunoFatorController
 
     public function update($alunoFatores)
     {
+        $query = '';
+
+        try {
+            foreach ($alunoFatores as $alunoFator) {
+                $query .= "UPDATE aluno_fator SET resposta = {$alunoFator->getResposta()} 
+                          WHERE aluno_id= '{$alunoFator->getMatriculaAluno()}' 
+                          AND fator_id= '{$alunoFator->getFatorId()}';";
+            }
+
+            pg_query($this->connection, $query);
+        } catch (Exception $e) {
+            //echo $e->getMessage();
+            return false;
+        }
     }
 
     public function delete($alunoId)

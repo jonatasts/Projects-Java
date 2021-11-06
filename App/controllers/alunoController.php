@@ -63,6 +63,14 @@ class AlunoController
 
     public function update($aluno)
     {
+        try {
+            $query = "UPDATE aluno SET serie_em_curso = {$aluno->getSerieEmCurso()}, observacao = '{$aluno->getObservacao()}' WHERE matricula = '{$aluno->getMatriculaAluno()}';";
+
+            $result = pg_query($this->connection, $query);
+        } catch (Exception $e) {
+            //echo $e->getMessage();
+            return false;
+        }
     }
 
     public function delete($matricula)
