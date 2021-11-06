@@ -10,15 +10,15 @@ class AlunoFatorController
         $this->connection = $connection;
     }
 
-    public function insertAlunosFatores($alunosFatores)
+    public function insertAlunoFatores($alunoFatores)
     {
         $query = "INSERT INTO aluno_fator (aluno_id, fator_id, resposta) VALUES ";
 
         try {
-            foreach ($alunosFatores
+            foreach ($alunoFatores
                 as $key => $alunoFator) {
                 $query .= "('{$alunoFator->getMatriculaAluno()}', '{$alunoFator->getFatorId()}', {$alunoFator->getResposta()})";
-                $query .= $key + 1 === count($alunosFatores) ? ';' : ', ';
+                $query .= $key + 1 === count($alunoFatores) ? ';' : ', ';
             }
 
             pg_query($this->connection, $query);
@@ -28,7 +28,7 @@ class AlunoFatorController
         }
     }
 
-    public function select($alunosFatores)
+    public function select($alunoFatores)
     {
     }
 
@@ -36,7 +36,7 @@ class AlunoFatorController
     {
         try {
             $query = "SELECT * FROM aluno_fator WHERE aluno_id = '$matricula';";
-            $alunosFatores = [];
+            $alunoFatores = [];
 
             $result = pg_query($this->connection, $query);
 
@@ -48,10 +48,10 @@ class AlunoFatorController
                     $alunoFator->setFatorId($row['fator_id']);
                     $alunoFator->setResposta($row['resposta']);
 
-                    $alunosFatores[] = $alunoFator;
+                    $alunoFatores[] = $alunoFator;
                 }
 
-                return $alunosFatores;
+                return $alunoFatores;
             }
 
             return null;
@@ -61,12 +61,20 @@ class AlunoFatorController
         }
     }
 
-    public function update()
+    public function update($alunoFatores)
     {
     }
 
-    public function delete($alunosFatores)
+    public function delete($alunoId)
     {
+        try {
+            $query = "DELETE FROM aluno_fator WHERE aluno_id = '$alunoId';";
+
+            pg_query($this->connection, $query);
+        } catch (Exception $e) {
+            //echo $e->getMessage();
+            return false;
+        }
     }
 
 

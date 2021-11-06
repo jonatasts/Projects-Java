@@ -61,12 +61,20 @@ class AlunoController
         }
     }
 
-    public function update()
+    public function update($aluno)
     {
     }
 
-    public function delete($aluno)
+    public function delete($matricula)
     {
+        try {
+            $query = "DELETE FROM aluno WHERE matricula = '$matricula';";
+
+            pg_query($this->connection, $query);
+        } catch (Exception $e) {
+            //echo $e->getMessage();
+            return false;
+        }
     }
 
 
