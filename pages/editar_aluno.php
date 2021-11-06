@@ -1,7 +1,13 @@
-<!-- <%@page import="model.AlunoFator"%>
-<%@page import="dao.AlunoFatorDAO"%>
-<%@page import="controllers.RankingController"%>
-<%@page import="dao.RankingDAO"%> -->
+<?php
+session_start();
+
+require_once "../App/db/connection.php";
+include_once "../App/models/aluno.php";
+include_once "../App/models/alunoFator.php";
+include_once "../App/controllers/alunoController.php";
+include_once "../App/controllers/alunoFatorController.php";
+
+?>
 <!DOCTYPE HTML>
 <html>
 
@@ -13,15 +19,15 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./assets/css/skel-noscript.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/style-desktop.css" />
+    <link rel="stylesheet" href="../assets/css/skel-noscript.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style-desktop.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="./assets/js/skel.min.js"></script>
-    <script src="./assets/js/skel-panels.min.js"></script>
-    <script src="./assets/js/init.js"></script>
-    <script src="./assets/js/index.js"></script>
+    <script src="../assets/js/skel.min.js"></script>
+    <script src="../assets/js/skel-panels.min.js"></script>
+    <script src="../assets/js/init.js"></script>
+    <script src="../assets/js/index.js"></script>
 </head>
 
 <body>
@@ -55,44 +61,42 @@
         <div id="content" class="container">
             <section class="questionario">
                 <header>
+                    <?php
+                    $aluno = new Aluno();
+                    $alunoFatores = [];
+                    $alunoController = AlunoController::getInstance($connection);
+                    $alunoFatorController = AlunoFatorController::getInstance($connection);
 
-                    <!-- 
-                        //Atualiza as informa��es do aluno alteradas pelo usu�rio
-                            AlunoFatorDAO alunoFatorDAO = new AlunoFatorDAO();
-                            AlunoFator alunoFator = new AlunoFator();
-                            HttpSession sessao = request.getSession();
-                            alunoFator.setMatriculaAluno((String)sessao.getAttribute("matricula"));
-                            String anoEmCurso = (String)sessao.getAttribute("ano_em_curso");
-                            int anoCurso = Integer.parseInt(anoEmCurso);
-                            alunoFator.setAnoEmCurso(anoCurso);
-                            
-                            if (request.getParameter("btn").equalsIgnoreCase("alterar")) {
-                                try {
-                                    int[] pontos = new int[30];
+                    $matriculaAluno = $_SESSION['matricula'];
+                    $serieEmCurso = $_SESSION['serieEmCurso'];
+                    $observacao = pg_escape_string(trim(!empty($_POST['observacao']) ? $_POST['observacao'] : null));
 
-                                    for (int i = 0; i < 30; i++) {
-                                        pontos[i] = Integer.parseInt(request.getParameter("fator" + (i + 1)));
-                                    }
-                                    
-                                    alunoFator.setAnoLetivo(Integer.parseInt(request.getParameter("ano_letivo")));
-                                    alunoFator.setObservacao(request.getParameter("observacao"));
-                                    alunoFator.setFatores(pontos);
-                                    alunoFatorDAO.update(alunoFator);
-                                    
-                                    out.println("<h2 style=\"font-size: 1.5em;\">As informa��es do aluno: <b>"+alunoFator.getMatriculaAluno()+"</b> foram atualizadas com sucesso!</h2>");
+                    $aluno->setMatriculaAluno($matriculaAluno);
+                    $aluno->setSerieEmCurso($serieEmCurso);
+                    $aluno->setObservacao($observacao);
 
-                                } catch (RuntimeException erro) {
-                                    throw new RuntimeException("Erro update aluno e fatores: " + erro);
-                                }
-                            } //Remove o aluno escolhido pelo usu�rio
-                            else if (request.getParameter("btn").equalsIgnoreCase("excluir")) {
-                                String mat_aluno = alunoFator.getMatriculaAluno();
-                                alunoFatorDAO.delete(mat_aluno);
-                                out.println("<h2 style=\"font-size: 1.5em;\">O aluno <b>"+mat_aluno+"</b> foi removido com sucesso !</h2>");
-                            } 
-                    -->
+                    for ($i = 0; $i < 30; $i++) {
+                        $alunoFator = new AlunoFator();
+
+                        $alunoFator->setMatriculaAluno($aluno->getMatriculaAluno());
+                        $alunoFator->setFatorId("f" . ($i + 1));
+                        $alunoFator->setResposta(pg_escape_string(trim($_POST["fator" . ($i + 1)])));
+
+                        $alunoFatores[] =  $alunoFator;
+                    }
+
+                    if (strcasecmp($_POST['btn'], 'alterar') === 0) {
+                        $alunoFatorController->update($alunoFatores);
+                        $alunoController->update($aluno);
+                        echo "<h2 style=\"font-size: 1.5em;\">As informações do aluno: <b>{$aluno->getMatriculaAluno()}</b> foram atualizadas com sucesso!</h2>";
+                    } else if (strcasecmp($_POST['btn'], 'excluir') === 0) {
+                        $alunoFatorController->delete($aluno->getMatriculaAluno());
+                        $alunoController->delete($aluno->getMatriculaAluno());
+                        echo "<h2 style=\"font-size: 1.5em;\">O aluno <b>{$aluno->getMatriculaAluno()}</b> foi removido com sucesso !</h2>";
+                    }
+                    ?>
+
                 </header>
-
             </section>
         </div>
     </div>

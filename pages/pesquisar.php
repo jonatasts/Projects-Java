@@ -72,18 +72,15 @@ include_once "../App/controllers/fatorController.php";
 
                     $aluno = $alunoController->selectAlunoByMatricula($matricula);
 
-                    $alunosFatores = $alunoFatorController->selectAlunoByMatricula($matricula);
+                    $alunoFatores = $alunoFatorController->selectAlunoByMatricula($matricula);
 
                     $fatores = $fatorController->selectAllFatores();
 
                     $_SESSION['matricula'] = $aluno->getMatriculaAluno();
                     $_SESSION['serieEmCurso'] = $aluno->getMatriculaAluno();
 
-
                     // ------ $pontuacaoAluno = (new RankingDAO()).selectPontuacaoByMatricula(matricula);
                     $pontuacaoAluno = '???';
-
-
 
                     if (!$aluno) {
                         echo "<h2>Aluno não econtrado! </h2>";
@@ -107,7 +104,7 @@ include_once "../App/controllers/fatorController.php";
 
                 <?php
                 } else {
-                    echo "<form action=\"editar_aluno.jsp\" method=\"POST\">";
+                    echo "<form action=\"editar_aluno.php\" method=\"POST\">";
                     echo "<div><p>Pontuação: $pontuacaoAluno</p></div>";
                     echo "<p>Ano Letivo: {$aluno->getAnoLetivo()}</p>";
                     echo "<p>Série Em Curso:</p>";
@@ -155,9 +152,9 @@ include_once "../App/controllers/fatorController.php";
                             break;
                     }
 
-                    for ($i = 0; $i < count($alunosFatores); $i++) {
+                    for ($i = 0; $i < count($alunoFatores); $i++) {
                         echo "<p>" . ($i + 1) . " - " . $fatores[$i]->getDescricao() . "?</p>";
-                        switch ($alunosFatores[$i]->getResposta()) {
+                        switch ($alunoFatores[$i]->getResposta()) {
                             case 1: {
                                     echo "<input type=\"radio\" value=\"1\" name=\"fator" . ($i + 1) . "\" id=\"fator" . ($i + 1) . "_s\" checked=\"checked\" />";
                                     echo "<label for=\"fator" . ($i + 1) . "_s\" >Sim</label>";
