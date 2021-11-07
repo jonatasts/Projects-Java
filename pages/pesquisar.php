@@ -5,9 +5,11 @@ require_once "../App/db/connection.php";
 include_once "../App/models/aluno.php";
 include_once "../App/models/alunoFator.php";
 include_once "../App/models/fator.php";
+include_once "../App/models/ranking.php";
 include_once "../App/controllers/alunoController.php";
 include_once "../App/controllers/alunoFatorController.php";
 include_once "../App/controllers/fatorController.php";
+include_once "../App/controllers/rankingController.php";
 
 ?>
 
@@ -69,6 +71,7 @@ include_once "../App/controllers/fatorController.php";
                     $alunoController = AlunoController::getInstance($connection);
                     $alunoFatorController = AlunoFatorController::getInstance($connection);
                     $fatorController = FatorController::getInstance($connection);
+                    $rankingController = RankingController::getInstance($connection);
 
                     $aluno = $alunoController->selectAlunoByMatricula($matricula);
 
@@ -78,9 +81,7 @@ include_once "../App/controllers/fatorController.php";
 
                     $_SESSION['matricula'] = $aluno->getMatriculaAluno();
                     $_SESSION['ano_letivo'] = $aluno->getAnoLetivo();
-
-                    // ------ $pontuacaoAluno = (new RankingDAO()).selectPontuacaoByMatricula(matricula);
-                    $pontuacaoAluno = '???';
+                    $pontuacao = $rankingController->calcularPontuacao($alunoFatores, $fatorController);
 
                     if (!$aluno) {
                         echo "<h2>Aluno não econtrado! </h2>";
@@ -105,7 +106,7 @@ include_once "../App/controllers/fatorController.php";
                 <?php
                 } else {
                     echo "<form action=\"editar_aluno.php\" method=\"POST\">";
-                    echo "<div><p>Pontuação: $pontuacaoAluno</p></div>";
+                    echo "<div><p>Pontuação: $pontuacao</p></div>";
                     echo "<p>Ano Letivo: {$aluno->getAnoLetivo()}</p>";
                     echo "<p>Série Em Curso:</p>";
 
