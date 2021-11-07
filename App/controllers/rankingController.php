@@ -28,7 +28,7 @@ class RankingController
     {
         try {
             $rankings = [];
-            $query = "SELECT * FROM ranking;";
+            $query = "SELECT * FROM ranking ORDER BY pontuacao DESC;";
 
             $result = pg_query($this->connection, $query);
 
