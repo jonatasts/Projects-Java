@@ -44,7 +44,7 @@ include_once "../App/controllers/fatorController.php";
                     <li><a href="index.html">Início</a></li>
                     <li><a href="novo-aluno.html">Adicionar Aluno</a></li>
                     <li><a href="pesquisar.html">Pesquisar Aluno</a></li>
-                    <li class="active"><a href="ranking.jsp">Ranking</a></li>
+                    <li class="active"><a href="ranking.php">Ranking</a></li>
                 </ul>
             </nav>
         </div>
@@ -91,7 +91,7 @@ include_once "../App/controllers/fatorController.php";
                 <?php
                 if (!$aluno) {
                 ?>
-                    <form action="pesquisar.jsp" onsubmit="return validaPesquisa();" method="POST">
+                    <form action="pesquisar.php" onsubmit="return validaPesquisa();" method="POST">
                         <p style="font-size: 16px;">Informe a matrícula do aluno !</p>
                         <div style="margin-top: -50px;">
                             <input type="text" name="matricula" placeholder="Matrícula" />
