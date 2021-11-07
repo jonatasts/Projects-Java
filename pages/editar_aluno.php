@@ -4,8 +4,12 @@ session_start();
 require_once "../App/db/connection.php";
 include_once "../App/models/aluno.php";
 include_once "../App/models/alunoFator.php";
+include_once "../App/models/fator.php";
+include_once "../App/models/ranking.php";
 include_once "../App/controllers/alunoController.php";
 include_once "../App/controllers/alunoFatorController.php";
+include_once "../App/controllers/fatorController.php";
+include_once "../App/controllers/rankingController.php";
 
 ?>
 <!DOCTYPE HTML>
@@ -64,8 +68,11 @@ include_once "../App/controllers/alunoFatorController.php";
                     <?php
                     $aluno = new Aluno();
                     $alunoFatores = [];
+                    $ranking = new Ranking();
                     $alunoController = AlunoController::getInstance($connection);
                     $alunoFatorController = AlunoFatorController::getInstance($connection);
+                    $fatorController = FatorController::getInstance($connection);
+                    $rankingController = RankingController::getInstance($connection);
 
                     $matriculaAluno = $_SESSION['matricula'];
                     $serieEmCurso = pg_escape_string(trim(!empty($_POST['serie_em_curso']) ? $_POST['serie_em_curso'] : null));
@@ -85,9 +92,17 @@ include_once "../App/controllers/alunoFatorController.php";
                         $alunoFatores[] =  $alunoFator;
                     }
 
+                    $pontuacao = $rankingController->calcularPontuacao($alunoFatores, $fatorController);
+                    $ranking->setIdAluno($aluno->getMatriculaAluno());
+                    $ranking->setAnoLetivo($_SESSION['ano_letivo']);
+                    $ranking->setPontuacao($pontuacao);
+                    $ranking->setObservacao(strlen($observacao) > 0 ? 'true' : 'false');
+
                     if (strcasecmp($_POST['btn'], 'alterar') === 0) {
                         $alunoController->update($aluno);
                         $alunoFatorController->update($alunoFatores);
+                        $rankingController->update($ranking);
+
                         echo "<h2 style=\"font-size: 1.5em;\">As informações do aluno: <b>{$aluno->getMatriculaAluno()}</b> foram atualizadas com sucesso!</h2>";
                     } else if (strcasecmp($_POST['btn'], 'excluir') === 0) {
                         $alunoFatorController->delete($aluno->getMatriculaAluno());
