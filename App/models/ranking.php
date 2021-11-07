@@ -5,7 +5,7 @@ class Ranking
     private  $idAluno;
     private  $anoLetivo;
     private  $pontuacao;
-    private  $observacao = false;
+    private  $observacao;
 
     function __construct()
     {
