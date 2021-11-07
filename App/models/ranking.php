@@ -2,35 +2,33 @@
 
 class Ranking
 {
-    private  $idAlunoFator;
-    private  $serieEmCurso;
+    private  $idAluno;
+    private  $anoLetivo;
     private  $pontuacao;
     private  $observacao = false;
 
-    function __construct($idAlunoFator, $pontuacao)
+    function __construct()
     {
-        $this->idAluno = $idAlunoFator;
-        $this->pontuacao = $pontuacao;
     }
 
-    public function getIdAlunoFator()
+    public function getIdAluno()
     {
-        return $this->idAlunoFator;
+        return $this->idAluno;
     }
 
-    public function setIdAlunoFator($idAlunoFator)
+    public function setIdAluno($idAluno)
     {
-        $this->idAlunoFator = $idAlunoFator;
+        $this->idAluno = $idAluno;
     }
 
-    public function getSerieEmCurso()
+    public function getAnoLetivo()
     {
-        return $this->serieEmCurso;
+        return $this->anoLetivo;
     }
 
-    public function setSerieEmCurso($serieEmCurso)
+    public function setAnoLetivo($anoLetivo)
     {
-        $this->serieEmCurso = $serieEmCurso;
+        $this->anoLetivo = $anoLetivo;
     }
 
     public function getPontuacao()
