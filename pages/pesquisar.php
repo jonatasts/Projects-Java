@@ -77,6 +77,7 @@ include_once "../App/controllers/fatorController.php";
                     $fatores = $fatorController->selectAllFatores();
 
                     $_SESSION['matricula'] = $aluno->getMatriculaAluno();
+                    $_SESSION['ano_letivo'] = $aluno->getAnoLetivo();
 
                     // ------ $pontuacaoAluno = (new RankingDAO()).selectPontuacaoByMatricula(matricula);
                     $pontuacaoAluno = '???';
