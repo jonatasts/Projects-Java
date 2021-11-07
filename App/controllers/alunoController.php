@@ -49,7 +49,7 @@ class AlunoController
                 $aluno->setMatriculaAluno($row['matricula']);
                 $aluno->setSerieEmCurso($row['serie_em_curso']);
                 $aluno->setAnoLetivo($row['ano_letivo']);
-                $aluno->setObservacao($row['observacao']);
+                $aluno->setObservacao(trim($row['observacao']));
 
                 return $aluno;
             }
