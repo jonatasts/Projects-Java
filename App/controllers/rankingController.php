@@ -91,7 +91,7 @@ class RankingController
     public function delete($id_aluno_fator)
     {
         try {
-            $query = "DELETE FROM ranking WHERE id_aluno_fator = '$id_aluno_fator';";
+            $query = "DELETE FROM ranking WHERE id_aluno = '$id_aluno_fator';";
 
             pg_query($this->connection, $query);
         } catch (Exception $e) {
