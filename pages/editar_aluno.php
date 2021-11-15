@@ -105,9 +105,15 @@ include_once "../App/controllers/rankingController.php";
 
                         echo "<h2 style=\"font-size: 1.5em;\">As informações do aluno: <b>{$aluno->getMatriculaAluno()}</b> foram atualizadas com sucesso!</h2>";
                     } else if (strcasecmp($_POST['btn'], 'excluir') === 0) {
+                        $rankingController->delete($aluno->getMatriculaAluno());
                         $alunoFatorController->delete($aluno->getMatriculaAluno());
                         $alunoController->delete($aluno->getMatriculaAluno());
-                        echo "<h2 style=\"font-size: 1.5em;\">O aluno <b>{$aluno->getMatriculaAluno()}</b> foi removido com sucesso !</h2>";
+
+                        $_SESSION['deletedStudent']  = "<h2 style=\"font-size: 1.5em;\">O aluno <b>{$aluno->getMatriculaAluno()}</b> foi removido com sucesso !</h2>";
+
+                        header(
+                            'Location: sucesso.php'
+                        );
                     }
                     ?>
 
