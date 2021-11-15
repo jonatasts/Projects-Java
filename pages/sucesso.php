@@ -54,10 +54,22 @@ session_start();
 		<div id="content" class="container">
 			<section class="questionario">
 				<header>
-					<h2>Aluno adicionado com sucesso !</h2>
+					<?php
+					if (isset($_SESSION['deletedStudent'])) {
+						echo "<h2 style=\"font-size: 2em;\">O aluno <b>{$_SESSION['matricula']}</b> foi removido com sucesso !</h2>";;
+						unset($_SESSION['deletedStudent']);
+					} else if (isset($_SESSION['pontuacao'])) {
+						echo "<h2>Aluno adicionado com sucesso !</h2>";
+					}
+					?>
 				</header>
 				<form>
-					<h2>A pontuação atual é: <span> <?php echo $_SESSION['pontuacao'] ?> </span></h2>
+					<?php
+					if (isset($_SESSION['pontuacao'])) {
+						echo "<h2>A pontuação atual é: <span>{$_SESSION['pontuacao']}</span></h2>";
+						unset($_SESSION['pontuacao']);
+					}
+					?>
 				</form>
 			</section>
 		</div>
