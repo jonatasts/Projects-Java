@@ -75,32 +75,30 @@ include_once "../App/controllers/rankingController.php";
 
                     $aluno = $alunoController->selectAlunoByMatricula($matricula);
 
-                    $alunoFatores = $alunoFatorController->selectAlunoByMatricula($matricula);
+                    if ($aluno) {
+                        $alunoFatores = $alunoFatorController->selectAlunoByMatricula($matricula);
 
-                    $fatores = $fatorController->selectAllFatores();
+                        $fatores = $fatorController->selectAllFatores();
 
-                    $_SESSION['matricula'] = $aluno->getMatriculaAluno();
-                    $_SESSION['ano_letivo'] = $aluno->getAnoLetivo();
-                    $pontuacao = $rankingController->calcularPontuacao($alunoFatores, $fatorController);
+                        $_SESSION['matricula'] = $aluno->getMatriculaAluno();
+                        $_SESSION['ano_letivo'] = $aluno->getAnoLetivo();
+                        $pontuacao = $rankingController->calcularPontuacao($alunoFatores, $fatorController);
 
-                    if (!$aluno) {
-                        echo "<h2>Aluno não econtrado! </h2>";
-                    } else {
                         echo "<h2>Aluno: {$aluno->getMatriculaAluno()} </h2>";
+                    } else {
+                        echo "<h2>Aluno não econtrado! </h2>";
                     }
                     ?>
                 </header>
                 <?php
                 if (!$aluno) {
                 ?>
-                    <form action="pesquisar.php" onsubmit="return validaPesquisa();" method="POST">
+                    <form action="pesquisar.php" onsubmit="return validaPesquisa();" method="GET">
                         <p style="font-size: 16px;">Informe a matrícula do aluno !</p>
                         <div style="margin-top: -50px;">
                             <input type="text" name="matricula" placeholder="Matrícula" />
                             <input type="submit" name="pesquisar" value="Pesquisar">
                         </div>
-                        <h1 style="font-size: 16px; color:red; margin-top: 10px;">Não há aluno cadastrado com essa matrícula!</h1>
-
                     </form>
 
                 <?php
