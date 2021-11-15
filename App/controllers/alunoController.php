@@ -42,10 +42,9 @@ class AlunoController
             $query = "SELECT * FROM aluno WHERE matricula = '$matricula';";
 
             $result = pg_query($this->connection, $query);
+            $row = pg_fetch_assoc($result);
 
-            if ($result) {
-                $row = pg_fetch_assoc($result);
-
+            if ($row) {
                 $aluno->setMatriculaAluno($row['matricula']);
                 $aluno->setSerieEmCurso($row['serie_em_curso']);
                 $aluno->setAnoLetivo($row['ano_letivo']);
